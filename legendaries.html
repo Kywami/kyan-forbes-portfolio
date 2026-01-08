@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+
+
+@keyframes spriteBounce {
+
+0%, 100% {
+
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(-15px);
+}
+
+95% {
+    transform: translateY(0);
+}
+}
+
+body {
+
+  background-color: #7DB28D; 
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  background-color: #CC76A1;
+  font-size: 45px;
+  border: 5px #22031F solid;
+  border-radius: 15px; 
+  padding: 40px;
+  width: 60%;
+  margin: 20px auto;
+  font-family: 'Trebuchet MS', sans-serif;
+  text-align: center;
+  
+  box-shadow: 8px 8px 0px #22031F;
+}
+
+.legendaryinfo {
+  background-color: #CC76A1;
+  color: #22031F; 
+  font-size: 22px;
+  font-family: 'Trebuchet MS', sans-serif;
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,2,5);
+}
+
+
+.beast-box {
+  border: 3px solid #ecd9ea;
+  border-radius: 12px;
+  height: auto;
+  width: 70%;
+  padding: 20px;
+  position: relative;
+  background-color: #F2B7C6;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+ 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease; 
+}
+
+.beast-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  border-color: #CC76A1;
+}
+
+
+.enteidiv {
+  left: 50px;
+  top: 10px;
+}
+
+.raikoudiv {
+  left: 20%;
+  margin-top: 50px;
+  flex-direction: row-reverse; }
+
+.suicunediv {
+  left: 50px;
+  margin-top: 60px;
+}
+
+
+.img1, .img2, .img3 {
+  width: 80px;
+  height: auto;
+ animation: spriteBounce 0.7s infinite;
+}
+
+.enteiinfo, .raikouinfo, .suicuneinfo {
+  font-size: 20px;
+  color: #22031F;
+  font-family: 'Trebuchet MS', sans-serif;
+  margin: 0;
+}
+
+</style>
+</head>
+<body>
+
+  <h2>Look at These Legendaries!</h2>
+
+  <div class="legendaryinfo">
+    The Legendary Beasts or Trio of Sacred are a trio of Legendary Pokemon consisting of Raikou, Entei, and Suicune. 
+    They were first discovered in the Johto region. They have also been referred to as Beasts of Legend.
+    In Pokemon Super Mystery Dungeon, they are known as Raikou the Lightning, Entei the Volcanic, and Suicune the Gale.
+  </div>
+
+  <div class="beast-box enteidiv">
+    <img class="img1" src="entei.png">
+    <p class="enteiinfo">Entei embodies the passion of magma. This Pokemon is thought to have been born in the eruption of a volcano. It sends up massive bursts of fire that utterly consume all that they touch.</p>
+  </div>
+
+  <div class="beast-box raikoudiv">
+    <img class="img2" src="raikou.png">
+    <p class="raikouinfo">Raikou embodies the speed of lightning. The roars of this Pokemon send shock waves shuddering through the air and shake the ground as if lightning bolts had come crashing down.</p>
+  </div>
+
+  <div class="beast-box suicunediv">
+    <img class="img3" src="suicune.png">
+    <p class="suicuneinfo">Suicune embodies the compassion of a pure spring of water. It runs across the land with gracefulness. This Pokemon has the power to purify dirty water.</p>
+  </div>
+
+</body>
+</html>
