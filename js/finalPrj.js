@@ -68,12 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       e.stopPropagation();
       e.preventDefault();
-      const anchor = e.target.closest("a");
-      if (anchor.target === "_blank") {
-        return; // This exits the function and lets target="_blank" work
-      }      
       window.location.href = e.target.closest("a").href;
     });
   });
 });
+
 
