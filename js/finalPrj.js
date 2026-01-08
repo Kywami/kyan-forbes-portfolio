@@ -13,32 +13,39 @@ if (dropD) {
   dropD.appendChild(select);
 }
 
-// Function to flip through pictures
+// Function to flip through pictures (Carousel Logic)
 function initShowcaseCarousel(container) {
   const buttons = container.querySelectorAll("[data-showcaseslide-button]");
   const pics = container.querySelector("[data-pics]");
 
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-      // Prevent any parent link triggers
+      // Prevent click from affecting links or other elements
       e.stopPropagation(); 
       
       const offset = button.dataset.showcaseslideButton === "next" ? 1 : -1;
       const activeSlide = pics.querySelector("[data-active]");
+      
       if (!activeSlide) return;
 
       const slides = [...pics.children];
       let newIndex = slides.indexOf(activeSlide) + offset;
 
+      // Handle Infinite Loop
       if (newIndex < 0) newIndex = slides.length - 1;
       if (newIndex >= slides.length) newIndex = 0;
 
-      // Switch active status
+      // 1. Remove active status from old slide
       delete activeSlide.dataset.active;
+      activeSlide.classList.remove("just-activated");
+
+      // 2. Set active status on new slide
       slides[newIndex].dataset.active = true;
 
-      // Animation trigger
+      // 3. Trigger your CSS 'bounceIn' animation
       slides[newIndex].classList.add("just-activated");
+      
+      // Optional: remove class after animation finishes to reset it for next time
       setTimeout(() => {
         slides[newIndex].classList.remove("just-activated");
       }, 600);
@@ -48,19 +55,19 @@ function initShowcaseCarousel(container) {
 
 // Initialize on Load
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Initialize Carousels
+  // Initialize Carousels
   document.querySelectorAll("[data-showcaseslide]").forEach(initShowcaseCarousel);
 
-  // 2. Handle Links (Allow target="_blank" to work)
+  // Handle Links specifically to allow target="_blank"
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
-      // If the link has target="_blank", we let the browser handle it naturally
+      // If it's a new tab link, don't use e.preventDefault()
       if (link.target === "_blank") {
-        e.stopPropagation(); // Stops carousel from flipping when clicking the link
+        e.stopPropagation(); // Stop carousel logic, but let tab open
         return; 
       }
 
-      // For normal internal links
+      // For standard navigation
       e.preventDefault();
       e.stopPropagation();
       window.location.href = link.href;
