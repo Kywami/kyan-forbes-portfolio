@@ -1,0 +1,393 @@
+@keyframes bounceIn2 {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(-20px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translateX(-60px) scale(0.95);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(-30px) scale(1.02);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translateX(-10px) scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes waveBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-45px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+@keyframes gradientAni {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* ===========================
+   GLOBAL STYLES
+   =========================== */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+.rammetto-one-regular {
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ===========================
+   BACKGROUND
+   =========================== */
+.gradientBack {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(
+    180deg,
+    #0081af 0%,
+    #2dc7ff 15%,
+    #eaba6b 85%
+  );
+  background-size: 200% 200%;
+  animation: gradientAni 30s infinite ease-in-out alternate;
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+#waveHeader {
+  font-family: "Rammetto One";
+  text-align: center;
+  color: #eaba6b;
+  text-shadow: 2px 2px 2px #0081af;
+  font-size: 100px;
+  position: relative;
+  top: 15px;
+}
+
+#waveHeader span {
+  position: relative;
+  display: inline-block;
+  animation: waveBounce 0.6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.goBack {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  padding: 10px 16px;
+  font-size: 1.2rem;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  animation: bounceIn2 0.6s ease-in;
+  transition: background-color 0.3s ease;
+}
+
+.goBack:hover,
+.goBack:focus {
+  color: #ead2ac;
+  background-color: aliceblue;
+}
+
+/* ===========================
+   FLOATING SHAPES (LARGE)
+   =========================== */
+.floatingShapes2,
+.floatingShapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape0 {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 3s infinite ease-in-out;
+}
+
+.shape11 {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(54, 14, 232);
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape22 {
+  width: 130px;
+  height: 130px;
+  background-color: #c27809;
+  top: 50%;
+  left: 70%;
+  animation-delay: 2s;
+}
+
+.shape33 {
+  width: 150px;
+  height: 150px;
+  background-color: #ead2ac;
+  top: 80%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+.shape44 {
+  width: 200px;
+  height: 200px;
+  background-color: aliceblue;
+  top: 10%;
+  left: 80%;
+  animation-delay: 6s;
+  animation-duration: 6s;
+}
+
+/* ===========================
+   FLOATING SHAPES (SMALL)
+   =========================== */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float2 8s infinite ease-in-out;
+}
+
+.shape1 {
+  width: 40px;
+  height: 40px;
+  background-color: #00abe7;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 30px;
+  height: 30px;
+  background-color: #c27809;
+  top: 50%;
+  left: 70%;
+  animation-delay: 2s;
+}
+
+.shape3 {
+  width: 50px;
+  height: 50px;
+  background-color: #ead2ac;
+  top: 80%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+.shape4 {
+  width: 70px;
+  height: 70px;
+  background-color: aliceblue;
+  top: 90%;
+  left: -10%;
+  animation-delay: 6s;
+}
+
+/* ===========================
+   DROPDOWN
+   =========================== */
+#dropD {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+#dropD:hover {
+  background-color: aliceblue;
+}
+
+.dropDCont {
+  position: absolute;
+  top: 300px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px;
+  padding: 12px;
+  height: 400px;
+  width: 275px;
+}
+
+.dropDCont select {
+  font-family: "Rammetto One";
+  color: #0081af;
+  background-color: #ead2ac;
+  height: 30px;
+  min-width: 250px;
+  font-size: 15px;
+}
+
+.dropDCont:hover,
+.dropDCont:focus,
+.dropDCont select {
+  display: block;
+}
+
+.dropDCont select:hover {
+  background-color: #ead2ac;
+}
+
+/* ===========================
+   CAPTION / BOTTOM CONTENT
+   =========================== */
+.bottCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  z-index: 6;
+}
+
+/* ===========================
+   SLIDING PHOTOS
+   =========================== */
+.slidingPhotos {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.showcaseslide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcaseslide[data-active] {
+  opacity: 1;
+  z-index: 5;
+}
+
+.showcaseslide.just-activated {
+  animation: bounceIn 0.6s ease-in;
+}
+
+.showcaseslide > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.showcaseslide img {
+  display: block;
+  width: 550px;
+  height: 550px;
+  object-fit: contain;
+  object-position: center;
+  position: relative;
+  bottom: 25px;
+}
+
+/* ===========================
+   SLIDER BUTTONS
+   =========================== */
+.slidingPhotos button {
+  z-index: 10;
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 100px;
+  bottom: 25px;
+  transform: translateY(-10px);
+  cursor: pointer;
+  border-radius: 2%;
+  padding: 16px;
+}
+
+.slidingPhotos button:hover,
+.slidingPhotos button:focus {
+  color: antiquewhite;
+  outline: none;
+}
+
+.slidingPhotos button[data-showcaseslide-button="prev"] {
+  left: 500px;
+}
+.slidingPhotos button[data-showcaseslide-button="next"] {
+  right: 500px;
+}
