@@ -1,48 +1,29 @@
-var mainBody = document.body;
-//Dropdow list
-let artArray = [
-  "Web Dev Stuff",
-  "Artwork Stuff",
-  "Animation stuff",
-  "Pixel Art stuff",
-];
-let dropD;
-
-if (document.getElementById("portfolioContainer")) {
-  dropD = document.createElement("select");
-  dropD.setAttribute("id", "portfolioSelc");
-  document.getElementById("portfolioContainer").appendChild(dropD);
-}
+let artArray = ["Web Dev Stuff", "Artwork Stuff", "Animation stuff", "Pixel Art stuff"];
+let dropD = document.getElementById("portfolioContainer");
 
 if (dropD) {
-  for (var i = 0; i < artArray.length; i++) {
-    var option = document.createElement("option");
-    option.value = artArray[i];
-    option.text = artArray[i];
-    dropD.appendChild(option);
-  }
+  let select = document.createElement("select");
+  select.setAttribute("id", "portfolioSelc");
+  artArray.forEach(item => {
+    let option = document.createElement("option");
+    option.value = item;
+    option.text = item;
+    select.appendChild(option);
+  });
+  dropD.appendChild(select);
 }
 
-//takes you to different pages
-function goToThis(select) {
-  const url = select.value;
-  if (url) {
-    window.location.href = url;
-  }
-}
-
-// function to flip through pictures (buttons)
+// Function to flip through pictures
 function initShowcaseCarousel(container) {
   const buttons = container.querySelectorAll("[data-showcaseslide-button]");
+  const pics = container.querySelector("[data-pics]");
 
   buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const offset = button.dataset.showcaseslideButton === "next" ? 1 : -1;
-      const pics = container.querySelector("[data-pics]");
+    button.addEventListener("click", (e) => {
+      // Prevent any parent link triggers
+      e.stopPropagation(); 
       
-      // If the HTML structure is missing <ul data-pics>, this will stop the error
-      if (!pics) return;
-
+      const offset = button.dataset.showcaseslideButton === "next" ? 1 : -1;
       const activeSlide = pics.querySelector("[data-active]");
       if (!activeSlide) return;
 
@@ -52,10 +33,12 @@ function initShowcaseCarousel(container) {
       if (newIndex < 0) newIndex = slides.length - 1;
       if (newIndex >= slides.length) newIndex = 0;
 
-      slides[newIndex].dataset.active = true;
-      slides[newIndex].classList.add("just-activated");
+      // Switch active status
       delete activeSlide.dataset.active;
+      slides[newIndex].dataset.active = true;
 
+      // Animation trigger
+      slides[newIndex].classList.add("just-activated");
       setTimeout(() => {
         slides[newIndex].classList.remove("just-activated");
       }, 600);
@@ -63,31 +46,27 @@ function initShowcaseCarousel(container) {
   });
 }
 
+// Initialize on Load
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Carousel
-  document
-    .querySelectorAll("[data-showcaseslide]")
-    .forEach(initShowcaseCarousel);
+  // 1. Initialize Carousels
+  document.querySelectorAll("[data-showcaseslide]").forEach(initShowcaseCarousel);
 
-  // UPDATED LINK LOGIC
+  // 2. Handle Links (Allow target="_blank" to work)
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
-      const anchor = e.currentTarget;
-
-      // Check if the link is meant to open in a new tab
-      if (anchor.target === "_blank") {
-        // Stop the click from triggering carousel movement, 
-        // but DON'T preventDefault so the new tab opens.
-        e.stopPropagation();
+      // If the link has target="_blank", we let the browser handle it naturally
+      if (link.target === "_blank") {
+        e.stopPropagation(); // Stops carousel from flipping when clicking the link
         return; 
       }
 
-      // For standard links, handle the redirect manually
-      e.stopPropagation();
+      // For normal internal links
       e.preventDefault();
-      window.location.href = anchor.href;
+      e.stopPropagation();
+      window.location.href = link.href;
     });
   });
 });
+
 
 
