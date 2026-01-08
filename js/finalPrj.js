@@ -39,6 +39,10 @@ function initShowcaseCarousel(container) {
     button.addEventListener("click", () => {
       const offset = button.dataset.showcaseslideButton === "next" ? 1 : -1;
       const pics = container.querySelector("[data-pics]");
+      
+      // If the HTML structure is missing <ul data-pics>, this will stop the error
+      if (!pics) return;
+
       const activeSlide = pics.querySelector("[data-active]");
       if (!activeSlide) return;
 
@@ -49,26 +53,39 @@ function initShowcaseCarousel(container) {
       if (newIndex >= slides.length) newIndex = 0;
 
       slides[newIndex].dataset.active = true;
-      //this is for an animation I added
       slides[newIndex].classList.add("just-activated");
       delete activeSlide.dataset.active;
 
-      //this keeps it from playing everythime the page is opened and only when a pic is changed
       setTimeout(() => {
         slides[newIndex].classList.remove("just-activated");
       }, 600);
     });
   });
 }
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Carousel
   document
     .querySelectorAll("[data-showcaseslide]")
     .forEach(initShowcaseCarousel);
+
+  // UPDATED LINK LOGIC
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
+      const anchor = e.currentTarget;
+
+      // Check if the link is meant to open in a new tab
+      if (anchor.target === "_blank") {
+        // Stop the click from triggering carousel movement, 
+        // but DON'T preventDefault so the new tab opens.
+        e.stopPropagation();
+        return; 
+      }
+
+      // For standard links, handle the redirect manually
       e.stopPropagation();
       e.preventDefault();
-      window.location.href = e.target.closest("a").href;
+      window.location.href = anchor.href;
     });
   });
 });
