@@ -1,79 +1,79 @@
-let artArray = ["Web Dev Stuff", "Artwork Stuff", "Animation stuff", "Pixel Art stuff"];
-let dropD = document.getElementById("portfolioContainer");
+var mainBody = document.body;
+//Dropdow list
+let artArray = [
+  "Web Dev Stuff",
+  "Artwork Stuff",
+  "Animation stuff",
+  "Pixel Art stuff",
+];
+let dropD;
 
-if (dropD) {
-  let select = document.createElement("select");
-  select.setAttribute("id", "portfolioSelc");
-  artArray.forEach(item => {
-    let option = document.createElement("option");
-    option.value = item;
-    option.text = item;
-    select.appendChild(option);
-  });
-  dropD.appendChild(select);
+if (document.getElementById("portfolioContainer")) {
+  dropD = document.createElement("select");
+  dropD.setAttribute("id", "portfolioSelc");
+  document.getElementById("portfolioContainer").appendChild(dropD);
 }
 
-// Function to flip through pictures (Carousel Logic)
+if (dropD) {
+  for (var i = 0; i < artArray.length; i++) {
+    var option = document.createElement("option");
+    option.value = artArray[i];
+    option.text = artArray[i];
+    dropD.appendChild(option);
+  }
+}
+
+//takes you to different pages
+function goToThis(select) {
+  const url = select.value;
+  if (url) {
+    window.location.href = url;
+  }
+}
+
+// function to flip through pictures (buttons)
 function initShowcaseCarousel(container) {
   const buttons = container.querySelectorAll("[data-showcaseslide-button]");
-  const pics = container.querySelector("[data-pics]");
 
   buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      // Prevent click from affecting links or other elements
-      e.stopPropagation(); 
-      
+    button.addEventListener("click", () => {
       const offset = button.dataset.showcaseslideButton === "next" ? 1 : -1;
+      const pics = container.querySelector("[data-pics]");
       const activeSlide = pics.querySelector("[data-active]");
-      
       if (!activeSlide) return;
 
       const slides = [...pics.children];
       let newIndex = slides.indexOf(activeSlide) + offset;
 
-      // Handle Infinite Loop
       if (newIndex < 0) newIndex = slides.length - 1;
       if (newIndex >= slides.length) newIndex = 0;
 
-      // 1. Remove active status from old slide
-      delete activeSlide.dataset.active;
-      activeSlide.classList.remove("just-activated");
-
-      // 2. Set active status on new slide
       slides[newIndex].dataset.active = true;
-
-      // 3. Trigger your CSS 'bounceIn' animation
+      //this is for an animation I added
       slides[newIndex].classList.add("just-activated");
-      
-      // Optional: remove class after animation finishes to reset it for next time
+      delete activeSlide.dataset.active;
+
+      //this keeps it from playing everythime the page is opened and only when a pic is changed
       setTimeout(() => {
         slides[newIndex].classList.remove("just-activated");
       }, 600);
     });
   });
 }
-
-// Initialize on Load
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Carousels
-  document.querySelectorAll("[data-showcaseslide]").forEach(initShowcaseCarousel);
-
-  // Handle Links specifically to allow target="_blank"
+  document
+    .querySelectorAll("[data-showcaseslide]")
+    .forEach(initShowcaseCarousel);
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
-      // If it's a new tab link, don't use e.preventDefault()
-      if (link.target === "_blank") {
-        e.stopPropagation(); // Stop carousel logic, but let tab open
-        return; 
-      }
-
-      // For standard navigation
-      e.preventDefault();
       e.stopPropagation();
-      window.location.href = link.href;
+      e.preventDefault();
+      window.location.href = e.target.closest("a").href;
     });
   });
 });
+
+
 
 
 
