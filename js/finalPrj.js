@@ -1,27 +1,4 @@
 var mainBody = document.body;
-//Dropdow list
-let artArray = [
-  "Web Dev Stuff",
-  "Artwork Stuff",
-  "Animation stuff",
-  "Pixel Art stuff",
-];
-let dropD;
-
-if (document.getElementById("portfolioContainer")) {
-  dropD = document.createElement("select");
-  dropD.setAttribute("id", "portfolioSelc");
-  document.getElementById("portfolioContainer").appendChild(dropD);
-}
-
-if (dropD) {
-  for (var i = 0; i < artArray.length; i++) {
-    var option = document.createElement("option");
-    option.value = artArray[i];
-    option.text = artArray[i];
-    dropD.appendChild(option);
-  }
-}
 
 //takes you to different pages
 function goToThis(select) {
@@ -72,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 
 
