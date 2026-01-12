@@ -123,6 +123,7 @@ p,
   font-size: 100px;
   position: relative;
   top: 15px;
+  display: flex; justify-content: center;
 }
 
 #waveHeader span {
@@ -175,6 +176,7 @@ p,
   border-radius: 50%;
   opacity: 0.6;
   animation: float 3s infinite ease-in-out;
+  z-index: -1;
 }
 
 .shape11 {
@@ -222,6 +224,7 @@ p,
   border-radius: 50%;
   opacity: 0.6;
   animation: float2 8s infinite ease-in-out;
+  z-index: -1;
 }
 
 .shape1 {
@@ -291,6 +294,7 @@ p,
   height: 30px;
   min-width: 250px;
   font-size: 15px;
+  pointer-events: auto
 }
 
 .dropDCont:hover,
@@ -391,4 +395,5 @@ p,
 .slidingPhotos button[data-showcaseslide-button="next"] {
   right: 500px;
 }
+
 
