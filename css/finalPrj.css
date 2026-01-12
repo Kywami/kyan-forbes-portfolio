@@ -309,13 +309,6 @@ select:not(#Items) {
   align-items: center;
 }
 
-.caption {
-  margin-top: 12px;
-  font-size: 1rem;
-  color: #333;
-  text-align: center;
-  z-index: 6;
-}
 .caption a {
   display: inline-block;
   background-color: #0081af;
@@ -412,6 +405,7 @@ select:not(#Items) {
 .slidingPhotos button[data-showcaseslide-button="next"] {
   right: 500px;
 }
+
 
 
 
