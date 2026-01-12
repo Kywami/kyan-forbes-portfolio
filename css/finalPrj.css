@@ -267,44 +267,37 @@ p,
    DROPDOWN
    */
 #dropD {
+  margin-top: 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  border-radius: 5px;
-}
-
-#dropD:hover {
-  background-color: aliceblue;
+  z-index: 20;
 }
 
 .dropDCont {
-  position: absolute;
-  top: 300px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px 5px;
-  padding: 12px;
-  height: 400px;
-  width: 275px;
+position: relative;
+  background: rgba(255, 255, 255, 0.2); /* Slight glass effect */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.dropDCont select {
-  font-family: "Rammetto One";
+#items {
+font-family: "Rammetto One", sans-serif;
   color: #0081af;
   background-color: #ead2ac;
-  height: 30px;
-  min-width: 250px;
-  font-size: 15px;
-  pointer-events: auto
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
 }
-
-.dropDCont:hover,
-.dropDCont:focus,
-.dropDCont select {
-  display: block;
-}
-
-.dropDCont select:hover {
-  background-color: #ead2ac;
+select:not(#Items) {
+  display: none !important; 
 }
 
 /* 
@@ -395,5 +388,6 @@ p,
 .slidingPhotos button[data-showcaseslide-button="next"] {
   right: 500px;
 }
+
 
 
