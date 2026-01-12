@@ -316,8 +316,32 @@ select:not(#Items) {
   text-align: center;
   z-index: 6;
 }
+.caption a {
+  display: inline-block;
+  background-color: #0081af;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: "Rammetto One", sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.caption a:hover {
+  background-color: #eaba6b;
+  color: #0081af;
+  border-color: #0081af;
+  transform: translateY(-3px); /* Makes the button "lift" on hover */
+}
+
+.caption a::after {
+  margin-left: 5px;
+}
 
 /* 
+
    SLIDING PHOTOS
    */
 .slidingPhotos {
@@ -388,6 +412,7 @@ select:not(#Items) {
 .slidingPhotos button[data-showcaseslide-button="next"] {
   right: 500px;
 }
+
 
 
 
