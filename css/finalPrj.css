@@ -368,6 +368,7 @@ select:not(#Items) {
 }
 
 .showcaseslide img {
+  pointer-events: none;
   display: block;
   width: 550px;
   height: 550px;
@@ -400,11 +401,12 @@ select:not(#Items) {
 }
 
 .slidingPhotos button[data-showcaseslide-button="prev"] {
-  left: 500px;
+  left: 5%;
 }
 .slidingPhotos button[data-showcaseslide-button="next"] {
-  right: 500px;
+  right: 5%;
 }
+
 
 
 
