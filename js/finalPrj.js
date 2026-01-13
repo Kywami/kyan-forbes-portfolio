@@ -44,15 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
       if (link.target === "_blank") {
-        e.stopPropogation();
+        e.stopPropagation();
         return; 
       }
-      e.stopPropogation();
+      e.stopPropagation();
       e.preventDefault();
       window.location.href = e.target.closest("a").href;
     });
   });
 });
+
 
 
 
