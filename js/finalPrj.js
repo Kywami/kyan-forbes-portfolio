@@ -38,21 +38,28 @@ function initShowcaseCarousel(container) {
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
-  document
-    .querySelectorAll("[data-showcaseslide]")
-    .forEach(initShowcaseCarousel);
+
+  document.querySelectorAll("[data-showcaseslide]").forEach(initShowcaseCarousel);
+
+ 
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
-     if (link.target === "_blank") {
-        e.stopPropagation(); 
+      if (link.target === "_blank") {
+        e.stopPropagation();
         return; 
       }
+      
       e.stopPropagation();
       e.preventDefault();
-      window.location.href = e.target.closest("a").href;
+      
+      const anchor = e.target.closest("a");
+      if (anchor && anchor.href) {
+        window.location.href = anchor.href;
+      }
     });
   });
 });
+
 
 
 
