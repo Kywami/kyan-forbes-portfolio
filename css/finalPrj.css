@@ -384,38 +384,27 @@ p,
 .navbar-toggler {
     width: 45px; 
     height: 45px; 
-    background: #3eb1e6; 
+    background-color: #3eb1e6 !important; 
     border: none;
     display: flex;
-    flex-direction: column;
+    position: relative; /* Essential for absolute children */
     justify-content: center;
     align-items: center;
     padding: 0;
 }
-
 .toggler-icon {
     display: block;
+    position: absolute; /* Keep this */
     height: 3px;
     width: 28px; 
-    background: rgb(0, 0, 0); 
+    background-color: white !important; /* Changed to white for visibility */
     border-radius: 1px;
     transition: all 0.25s ease-in-out;
-    margin: 3px 0; 
 }
+.navbar-toggler.collapsed .top-bar { transform: translateY(-8px); }
+.navbar-toggler.collapsed .middle-bar { opacity: 1; transform: none; }
+.navbar-toggler.collapsed .bottom-bar { transform: translateY(8px); }
 
-.navbar-toggler.collapsed .top-bar { transform: none; }
-
-.navbar-toggler.collapsed .middle-bar { opacity: 1; }
-
-.navbar-toggler.collapsed .bottom-bar { transform: none; }
-
-/* This handles the "X" shape when menu is open */
-.navbar-toggler:not(.collapsed) .top-bar {
-    transform: rotate(45deg);
-}
-.navbar-toggler:not(.collapsed) .middle-bar {
-    opacity: 0;
-}
-.navbar-toggler:not(.collapsed) .bottom-bar {
-    transform: rotate(-45deg);
-}
+.navbar-toggler:not(.collapsed) .top-bar { transform: rotate(45deg); }
+.navbar-toggler:not(.collapsed) .middle-bar { opacity: 0; }
+.navbar-toggler:not(.collapsed) .bottom-bar { transform: rotate(-45deg); }
