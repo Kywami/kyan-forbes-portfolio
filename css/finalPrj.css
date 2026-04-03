@@ -362,26 +362,32 @@ p,
   right: 5%;
 }
 
-/* NAVBAR SECTION
-*/
-
-
-.navbar-brand {
-    font-family: "Rammetto One", sans-serif !important;
-    font-size: 1.5rem !important;
-}
+/* --- NAVBAR SECTION --- */
 
 .navbar {
-    z-index: 1000;
-    position: relative;
-    background-color: #0081af !important; 
-    border-bottom: 3px solid #ead2ac !important; 
-    padding: 10px 0;
+  z-index: 1000;
+  position: relative;
+  background-color: #0081af !important; /* Matches top gradient blue */
+  border-bottom: 3px solid #ead2ac !important;
+  padding: 10px 0;
+}
+
+/* This targets the white section from your screenshot */
+.navbar-collapse, 
+.container-fluid, 
+.navbar-nav {
+  background-color: transparent !important;
+}
+
+.navbar-brand {
+  font-family: "Rammetto One", sans-serif !important;
+  font-size: 1.5rem !important;
+  color: white !important;
 }
 
 .nav-link {
   color: white !important;
-  font-family: "Rammetto One", sans-serif;
+  font-family: "Rammetto One", sans-serif !important;
   font-size: 1.1rem;
   padding: 10px 20px !important;
 }
@@ -393,7 +399,7 @@ p,
 .navbar-toggler {
   width: 45px;
   height: 45px;
-  background-color: #3eb1e6 !important; /* Set to blue background */
+  background-color: #3eb1e6 !important;
   border: none;
   display: flex;
   position: relative;
@@ -412,29 +418,11 @@ p,
   transition: all 0.25s ease-in-out;
 }
 
-.navbar-collapse {
-  background-color: white;
-  position: relative;
-  z-index: 2000;
-}
+/* Toggler Animations */
+.navbar-toggler.collapsed .top-bar { transform: translateY(-8px); }
+.navbar-toggler.collapsed .middle-bar { opacity: 1; }
+.navbar-toggler.collapsed .bottom-bar { transform: translateY(8px); }
 
-.navbar-toggler.collapsed .top-bar {
-  transform: translateY(-8px);
-}
-.navbar-toggler.collapsed .middle-bar {
-  opacity: 1;
-  transform: none;
-}
-.navbar-toggler.collapsed .bottom-bar {
-  transform: translateY(8px);
-}
-
-.navbar-toggler:not(.collapsed) .top-bar {
-  transform: rotate(45deg);
-}
-.navbar-toggler:not(.collapsed) .middle-bar {
-  opacity: 0;
-}
-.navbar-toggler:not(.collapsed) .bottom-bar {
-  transform: rotate(-45deg);
-}
+.navbar-toggler:not(.collapsed) .top-bar { transform: rotate(45deg); }
+.navbar-toggler:not(.collapsed) .middle-bar { opacity: 0; }
+.navbar-toggler:not(.collapsed) .bottom-bar { transform: rotate(-45deg); }
