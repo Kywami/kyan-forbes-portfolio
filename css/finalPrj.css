@@ -263,42 +263,7 @@ p,
   animation-delay: 6s;
 }
 
-/* 
-   DROPDOWN
-   */
-#dropD {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  z-index: 20;
-}
 
-.dropDCont {
-position: relative;
-  background: rgba(255, 255, 255, 0.2); 
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#items {
-font-family: "Rammetto One", sans-serif;
-  color: #0081af;
-  background-color: #ead2ac;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-}
-select:not(#Items) {
-  display: none !important; 
-}
 
 /* 
    CAPTION / BOTTOM CONTENT
@@ -407,29 +372,36 @@ select:not(#Items) {
   right: 5%;
 }
 
-/* Adjusted size so the bars actually fit */
+
+
+
+.navbar {
+    position: relative;
+    z-index: 1000; /* Keeps it on top of the background and floating shapes */
+}
+
+
 .navbar-toggler {
     width: 45px; 
-    height: 35px;
+    height: 45px; 
+    display: flex;
+    align-items: right;
+    justify-content: right;
     position: relative;
-    transition: .5s ease-in-out;
-    background: #3eb1e6; /* This is the blue box */
+    background: #3eb1e6; 
     border: none;
 }
 
-/* Made the bars white and thicker for better visibility */
 .toggler-icon {
     display: block;
     position: absolute;
     height: 3px;
-    width: 30px; /* Width of the actual bars */
+    width: 25px; 
     background: white; 
     border-radius: 1px;
-    left: 7px; /* Center the bars in the box */
     transition: .25s ease-in-out;
 }
 
-/* Position the three bars vertically */
 .navbar-toggler.collapsed .top-bar {
     transform: translateY(-10px);
 }
