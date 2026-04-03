@@ -300,48 +300,54 @@ p,
 /* SLIDING PHOTOS
     */
 .slidingPhotos {
-  z-index: 10;
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-display: flex;
-  justify-content: center;
+    z-index: 10;
+
+    height: calc(100vh - 80px); 
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .showcaseslide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    display: flex;
+    /* Changed to column to ensure the caption stays below the image */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .showcaseslide[data-active] {
-  opacity: 1;
-  z-index: 5;
+    opacity: 1;
+    z-index: 5;
 }
 
 .showcaseslide.just-activated {
-  animation: bounceIn 0.6s ease-in;
+    animation: bounceIn 0.6s ease-in;
 }
 
 .showcaseslide > ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .showcaseslide img {
-  pointer-events: none;
-  display: block;
-  width: 550px;
-  height: 550px;
-  object-fit: contain;
-  object-position: center;
-  position: relative;
-  bottom: 25px;
+    pointer-events: none;
+    display: block;
+    
+    width: auto;
+    max-width: 90%;
+    max-height: 70vh; 
+    object-fit: contain;
+    object-position: center;
+    position: relative;
+  
+    bottom: 0;
 }
 
 /*
