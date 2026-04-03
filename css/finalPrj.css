@@ -379,6 +379,15 @@ p,
     z-index: 1000;
     position: relative;
     background-color: #ffffff !important; 
+    border-bottom: 2px solid #ead2ac;
+}
+
+.nav-link, .navbar-brand {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: #ead2ac !important; 
 }
 
 .navbar-toggler {
