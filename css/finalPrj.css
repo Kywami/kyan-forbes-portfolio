@@ -371,13 +371,15 @@ display: flex;
 /* --- NAVBAR SECTION --- */
 
 .navbar {
- position: fixed !important;
- top: 0;
-  z-index: 9999;
-  position: relative;
-  background-color: #0081af !important; 
-  border-bottom: 3px solid #ead2ac !important;
-  padding: 10px 0;
+    position: fixed !important; 
+    top: 0;
+    left: 0;                  
+    width: 100%;               
+    z-index: 9999;
+    background-color: #0081af !important; 
+    border-bottom: 3px solid #ead2ac !important;
+    padding: 10px 0;
+    margin: 0;                 
 }
 
 
