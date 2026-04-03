@@ -364,6 +364,13 @@ p,
 
 /* NAVBAR SECTION
 */
+
+
+.navbar-brand {
+ font-family: "Rammetto One", sans-serif;
+
+}
+
 .navbar {
     z-index: 1000;
     position: relative;
