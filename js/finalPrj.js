@@ -63,18 +63,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- NAVBAR LOGIC: SUBTRACT CURRENT PAGE ---
   
   // Added a fallback in case pop() returns empty (like on a root domain)
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  // --- NAVBAR LOGIC: SUBTRACT CURRENT PAGE ---
+  
+  // 1. Get the current filename and handle empty strings for homepages
+  const path = window.location.pathname;
+  const currentPage = path.split("/").pop() || "index.html";
 
   const navLinks = document.querySelectorAll(".nav-link");
 
   navLinks.forEach(link => {
-    const linkDestination = link.getAttribute("href");
+    // 2. Get only the filename from the href (ignoring ./ or /)
+    const linkHref = link.getAttribute("href");
+    const linkFile = linkHref ? linkHref.split("/").pop() : "";
     
-    if (linkDestination === currentPage) {
+    // 3. Compare filenames only
+    if (linkFile === currentPage) {
         link.style.display = "none"; 
     }
   });
-});
 
 
 
