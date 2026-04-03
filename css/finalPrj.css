@@ -365,10 +365,11 @@ p,
 /* NAVBAR SECTION
 */
 .navbar {
-  z-index: 1000;
-  position: relative;
-  background-color: #ffffff !important;
-  border-bottom: 2px solid #ead2ac;
+    z-index: 1000;
+    position: relative;
+    background-color: #0081af !important; 
+    border-bottom: 3px solid #ead2ac !important; 
+    padding: 10px 0;
 }
 
 .nav-link {
