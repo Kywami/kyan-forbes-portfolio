@@ -367,8 +367,8 @@ p,
 
 
 .navbar-brand {
- font-family: "Rammetto One", sans-serif;
-
+    font-family: "Rammetto One", sans-serif !important;
+    font-size: 1.5rem !important;
 }
 
 .navbar {
