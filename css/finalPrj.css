@@ -83,7 +83,7 @@
 /* BODY/TEXT
      */
      
-     html, body {
+   html, body {
 margin: 0 !important;
     padding: 0 !important;
     width: 100%;
@@ -301,13 +301,15 @@ p,
     */
 .slidingPhotos {
     z-index: 10;
-
+    /* Resolution: Push container down by nav height and subtract from total height */
     height: calc(100vh - 80px); 
+    margin-top: 80px; 
     width: 100vw;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .showcaseslide {
@@ -315,7 +317,6 @@ p,
     inset: 0;
     opacity: 0;
     display: flex;
-    /* Changed to column to ensure the caption stays below the image */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -339,15 +340,14 @@ p,
 .showcaseslide img {
     pointer-events: none;
     display: block;
-    
     width: auto;
-    max-width: 90%;
-    max-height: 70vh; 
+    /* Resolution: Scaled down to prevent navbar overlap */
+    max-width: 85%;
+    max-height: 60vh; 
     object-fit: contain;
     object-position: center;
     position: relative;
-  
-    bottom: 0;
+    bottom: unset;
 }
 
 /*
@@ -358,12 +358,14 @@ p,
   position: absolute;
   background: none;
   border: none;
-  font-size: 100px;
-  bottom: 25px;
-  transform: translateY(-10px);
+  font-size: 80px;
+  /* Resolution: Lowered arrows closer to the bottom */
+  bottom: 15px;
+  transform: translateY(0);
   cursor: pointer;
   border-radius: 2%;
   padding: 16px;
+  transition: all 0.3s ease;
 }
 
 .slidingPhotos button:hover,
@@ -453,4 +455,4 @@ text-shadow: 0px 0px 8px rgba(234, 210, 172, 0.6);
 
 .navbar-toggler:not(.collapsed) .top-bar { transform: rotate(45deg); }
 .navbar-toggler:not(.collapsed) .middle-bar { opacity: 0; }
-.navbar-toggler:not(.collapsed) .bottom-bar { transform: rotate(-45deg); }
+.navbar-toggler:not(.collapsed) .bottom-bar { transform: rotate(-45deg); } 
