@@ -1,12 +1,6 @@
 var mainBody = document.body;
 
-//takes you to different pages
-function goToThis(select) {
-  const url = select.value;
-  if (url) {
-    window.location.href = url;
-  }
-}
+
 
 // function to flip through pictures (buttons)
 function initShowcaseCarousel(container) {
