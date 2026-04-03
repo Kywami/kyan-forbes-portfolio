@@ -376,30 +376,31 @@ p,
 
 
 .navbar {
+    z-index: 1000;
     position: relative;
-    z-index: 1000; /* Keeps it on top of the background and floating shapes */
+    background-color: #ffffff !important; 
 }
-
 
 .navbar-toggler {
     width: 45px; 
     height: 45px; 
-    display: flex;
-    align-items: right;
-    justify-content: right;
-    position: relative;
     background: #3eb1e6; 
     border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 .toggler-icon {
     display: block;
-    position: absolute;
     height: 3px;
-    width: 25px; 
+    width: 28px; 
     background: white; 
     border-radius: 1px;
-    transition: .25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    margin: 3px 0; 
 }
 
 .navbar-toggler.collapsed .top-bar {
