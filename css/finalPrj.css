@@ -97,7 +97,7 @@ p,
 /* BACKGROUND
      */
 .gradientBack {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(
@@ -365,14 +365,16 @@ p,
 /* --- NAVBAR SECTION --- */
 
 .navbar {
-  z-index: 1000;
+ position: fixed !important;
+ top: 0;
+  z-index: 9999;
   position: relative;
-  background-color: #0081af !important; /* Matches top gradient blue */
+  background-color: #0081af !important; 
   border-bottom: 3px solid #ead2ac !important;
   padding: 10px 0;
 }
 
-/* This targets the white section from your screenshot */
+
 .navbar-collapse, 
 .container-fluid, 
 .navbar-nav {
@@ -391,7 +393,8 @@ p,
   font-size: 1.1rem;
   padding: 10px 20px !important;
 transition: all 0.3s ease;
-  display: inline-block;
+ display: inline-block !important;
+  position: relative;
 }
 
 .nav-link:hover {
