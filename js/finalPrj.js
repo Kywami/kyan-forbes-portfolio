@@ -1,7 +1,6 @@
 var mainBody = document.body;
 
 
-
 // function to flip through pictures (buttons)
 function initShowcaseCarousel(container) {
   const buttons = container.querySelectorAll("[data-showcaseslide-button]");
@@ -31,11 +30,12 @@ function initShowcaseCarousel(container) {
     });
   });
 }
-document.addEventListener("DOMContentLoaded", () => {
 
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Initialize Carousels
   document.querySelectorAll("[data-showcaseslide]").forEach(initShowcaseCarousel);
 
- 
+  // 2. Handle Slide Links
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
       if (link.target === "_blank") {
@@ -51,6 +51,23 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = anchor.href;
       }
     });
+  });
+
+  // --- NEW LOGIC: SUBTRACT CURRENT PAGE FROM NAVBAR ---
+  
+  // Get the filename of the current page (e.g., "WebDevSect.html")
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Find all links inside your navbar
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navLinks.forEach(link => {
+    // Check if the link's href matches the current page filename
+    const linkDestination = link.getAttribute("href");
+    
+    if (linkDestination === currentPage) {
+        link.style.display = "none"; // Hides the link entirely
+    }
   });
 });
 
