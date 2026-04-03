@@ -397,7 +397,7 @@ p,
     display: block;
     height: 3px;
     width: 28px; 
-    background: white; 
+    background: rgb(0, 0, 0); 
     border-radius: 1px;
     transition: all 0.25s ease-in-out;
     margin: 3px 0; 
