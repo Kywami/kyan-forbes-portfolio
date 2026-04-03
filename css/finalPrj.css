@@ -401,6 +401,13 @@ p,
     border-radius: 1px;
     transition: all 0.25s ease-in-out;
 }
+
+.navbar-collapse {
+    background-color: white; /* Or any solid color */
+    position: relative;
+    z-index: 2000;
+}
+
 .navbar-toggler.collapsed .top-bar { transform: translateY(-8px); }
 .navbar-toggler.collapsed .middle-bar { opacity: 1; transform: none; }
 .navbar-toggler.collapsed .bottom-bar { transform: translateY(8px); }
