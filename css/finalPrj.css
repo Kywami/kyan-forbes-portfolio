@@ -403,17 +403,11 @@ p,
     margin: 3px 0; 
 }
 
-.navbar-toggler.collapsed .top-bar {
-    transform: translateY(-10px);
-}
+.navbar-toggler.collapsed .top-bar { transform: none; }
 
-.navbar-toggler.collapsed .middle-bar {
-    opacity: 1;
-}
+.navbar-toggler.collapsed .middle-bar { opacity: 1; }
 
-.navbar-toggler.collapsed .bottom-bar {
-    transform: translateY(10px);
-}
+.navbar-toggler.collapsed .bottom-bar { transform: none; }
 
 /* This handles the "X" shape when menu is open */
 .navbar-toggler:not(.collapsed) .top-bar {
