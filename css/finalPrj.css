@@ -384,10 +384,10 @@ p,
 .navbar-toggler {
     width: 45px; 
     height: 45px; 
-    background-color: #3eb1e6 !important; 
+    background-color: none;
     border: none;
     display: flex;
-    position: relative; /* Essential for absolute children */
+    position: relative; 
     justify-content: center;
     align-items: center;
     padding: 0;
