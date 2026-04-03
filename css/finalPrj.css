@@ -456,3 +456,7 @@ text-shadow: 0px 0px 8px rgba(234, 210, 172, 0.6);
 .navbar-toggler:not(.collapsed) .top-bar { transform: rotate(45deg); }
 .navbar-toggler:not(.collapsed) .middle-bar { opacity: 0; }
 .navbar-toggler:not(.collapsed) .bottom-bar { transform: rotate(-45deg); } 
+
+.nav-link[style*="display: none"] {
+    display: none !important;
+}
