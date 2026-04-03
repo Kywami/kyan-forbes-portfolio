@@ -1,6 +1,5 @@
 var mainBody = document.body;
 
-
 // function to flip through pictures (buttons)
 function initShowcaseCarousel(container) {
   const buttons = container.querySelectorAll("[data-showcaseslide-button]");
@@ -9,6 +8,9 @@ function initShowcaseCarousel(container) {
     button.addEventListener("click", () => {
       const offset = button.dataset.showcaseslideButton === "next" ? 1 : -1;
       const pics = container.querySelector("[data-pics]");
+      
+      if (!pics) return; // Safety check for the data-pics attribute
+
       const activeSlide = pics.querySelector("[data-active]");
       if (!activeSlide) return;
 
@@ -18,15 +20,20 @@ function initShowcaseCarousel(container) {
       if (newIndex < 0) newIndex = slides.length - 1;
       if (newIndex >= slides.length) newIndex = 0;
 
+      // 1. Clean up: Remove animation class from ALL slides to prevent sticking
+      slides.forEach(s => s.classList.remove("just-activated"));
+
+      // 2. Update Active State
       slides[newIndex].dataset.active = true;
-      //this is for an animation I added
-      slides[newIndex].classList.add("just-activated");
       delete activeSlide.dataset.active;
 
-      //this keeps it from playing everythime the page is opened and only when a pic is changed
+      // 3. Trigger Animation
+      slides[newIndex].classList.add("just-activated");
+
+      // 4. Clear class after animation finishes (matches CSS duration)
       setTimeout(() => {
         slides[newIndex].classList.remove("just-activated");
-      }, 600);
+      }, 650); 
     });
   });
 }
@@ -53,24 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- NEW LOGIC: SUBTRACT CURRENT PAGE FROM NAVBAR ---
+  // --- NAVBAR LOGIC: SUBTRACT CURRENT PAGE ---
   
-  // Get the filename of the current page (e.g., "WebDevSect.html")
-  const currentPage = window.location.pathname.split("/").pop();
+  // Added a fallback in case pop() returns empty (like on a root domain)
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  // Find all links inside your navbar
   const navLinks = document.querySelectorAll(".nav-link");
 
   navLinks.forEach(link => {
-    // Check if the link's href matches the current page filename
     const linkDestination = link.getAttribute("href");
     
     if (linkDestination === currentPage) {
-        link.style.display = "none"; // Hides the link entirely
+        link.style.display = "none"; 
     }
   });
 });
-
 
 
 
