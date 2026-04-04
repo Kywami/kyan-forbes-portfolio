@@ -486,3 +486,16 @@ text-shadow: 0px 0px 8px rgba(234, 210, 172, 0.6);
     background-color: #eaba6b !important; 
     transform: translateY(-3px);
 }
+
+
+.about-container {
+    margin-top: 100px !important; 
+    position: relative;
+    z-index: 10;
+    padding-bottom: 50px;
+}
+
+
+.about-container .row {
+    margin-top: 0;
+}
