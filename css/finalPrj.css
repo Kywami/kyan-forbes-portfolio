@@ -112,7 +112,7 @@ p,
   background-image: linear-gradient(
     180deg,
     #0081af 0%,
-    #2dc7ff 15%,
+    #005E80 15%,
     #eaba6b 85%
   );
   background-size: 200% 200%;
@@ -391,7 +391,7 @@ p,
     left: 0;                   
     width: 100% !important;               
     z-index: 9999;
-    background-color: #0081af !important; 
+    background-color: #97D5F2 !important; 
     border-bottom: 3px solid #ead2ac !important;
     padding: 10px 0;
     margin: 0 !important;      
