@@ -7,7 +7,7 @@ function FadeInImages(props) {
     setVisible(true);
   }, []);
   return (
-    <div className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}>
+    <div className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
       {props.children}
     </div>
   );
