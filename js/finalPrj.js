@@ -1,6 +1,6 @@
 var mainBody = document.body;
 
-// decorative fade in images //
+// 1. YOUR REACT COMPONENT DEFINITION (Safe to keep globally)
 function FadeInImages(props) {
   const [isVisible, setVisible] = React.useState(false);
   
@@ -13,24 +13,9 @@ function FadeInImages(props) {
       {props.children}
     </div>
   );
-} 
-
-const decorationContainer = document.querySelector('.page-decorations');
-if (decorationContainer) {
-  const root = ReactDOM.createRoot(decorationContainer);
-  root.render(
-    <React.Fragment>
-      <FadeInImages>
-        <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/charmander.png" alt="Shiny Charmander sprite" />
-      </FadeInImages>
-      <FadeInImages>
-        <img src="img/new-animation-asset2.png" alt="Fade in decorative asset" />
-      </FadeInImages>
-    </React.Fragment>
-  );
 }
 
-
+// 2. CAROUSEL INITIALIZATION FUNCTION
 function initShowcaseCarousel(container) {
   const buttons = container.querySelectorAll("[data-showcaseslide-button]");
 
@@ -64,12 +49,29 @@ function initShowcaseCarousel(container) {
   });
 }
 
-
+// 3. SECURE SINGLE ENTRY POINT
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Carousels
+  
+  // A. Mount React safely inside the DOM event loop
+  const decorationContainer = document.querySelector('.page-decorations');
+  if (decorationContainer) {
+    const root = ReactDOM.createRoot(decorationContainer);
+    root.render(
+      <React.Fragment>
+        <FadeInImages>
+          <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/charmander.png" alt="Shiny Charmander sprite" />
+        </FadeInImages>
+        <FadeInImages>
+          <img src="img/new-animation-asset2.png" alt="Fade in decorative asset" />
+        </FadeInImages>
+      </React.Fragment>
+    );
+  }
+
+  // B. Initialize Carousels
   document.querySelectorAll("[data-showcaseslide]").forEach(initShowcaseCarousel);
 
-  // Handle Slide Links
+  // C. Handle Slide Links
   document.querySelectorAll(".showcaseslide a").forEach((link) => {
     link.addEventListener("click", (e) => {
       if (link.target === "_blank") {
@@ -87,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // navbar
+  // D. Navbar updates
   const currentPath = window.location.pathname.split('/').pop() || "index.html";
   const navLinks = document.querySelectorAll(".nav-link");
 
