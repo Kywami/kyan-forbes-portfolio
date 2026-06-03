@@ -13,6 +13,21 @@ function FadeInImages(props) {
       {props.children}
     </div>
   );
+} 
+
+const decorationContainer = document.querySelector('.page-decorations');
+if (decorationContainer) {
+  const root = ReactDOM.createRoot(decorationContainer);
+  root.render(
+    <React.Fragment>
+      <FadeInImages>
+        <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/charmander.png" alt="Shiny Charmander sprite" />
+      </FadeInImages>
+      <FadeInImages>
+        <img src="img/new-animation-asset2.png" alt="Fade in decorative asset" />
+      </FadeInImages>
+    </React.Fragment>
+  );
 }
 
 // function to flip through pictures (buttons)
