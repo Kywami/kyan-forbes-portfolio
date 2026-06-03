@@ -498,7 +498,12 @@ text-shadow: 0px 0px 8px rgba(234, 210, 172, 0.6);
     background-color: #ddd; 
 
   
-  /* DECORATIVE SLIDE-IN IMAGES
+  /* DECORATIVE SLIDE-IN IMAGES */
+.page-decorations {
+  position: fixed;
+  pointer-events: none; 
+  z-index: -1;
+}
 
 .fade-in-section {
   opacity: 0;
