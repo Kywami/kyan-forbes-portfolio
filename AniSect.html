@@ -71,7 +71,6 @@
 
 <div class="page-decorations" id="react-decorations-root"></div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/babel">
@@ -79,7 +78,10 @@
     const [isVisible, setVisible] = React.useState(false);
     
     React.useEffect(() => {
-      setVisible(true);
+      const timer = setTimeout(() => {
+        setVisible(true);
+      }, 100);
+      return () => clearTimeout(timer);
     }, []);
 
     return (
@@ -89,7 +91,6 @@
     );
   }
 
-  // Look for the page rendering hook element
   const rootElement = document.getElementById('react-decorations-root');
   if (rootElement) {
     const root = ReactDOM.createRoot(rootElement);
@@ -99,7 +100,7 @@
           <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/charmander.png" alt="Shiny Charmander sprite" />
         </FadeInImages>
         <FadeInImages>
-          <img src="https://img.pokemondb.net/sprites/black-white/normal/venusaur-f.png" alt="Fade in decorative asset" />
+          <img src="https://img.pokemondb.net/sprites/black-white/normal/venusaur-f.png" alt="Venusaur sprite" />
         </FadeInImages>
       </React.Fragment>
     );
@@ -107,6 +108,5 @@
 </script>
 
 <script src="js/finalPrj.js"></script>
-
 </body>
 </html>
