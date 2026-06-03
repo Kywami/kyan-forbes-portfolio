@@ -1,4 +1,3 @@
-
 var mainBody = document.body;
 
 // decorative fade in images //
