@@ -3,11 +3,13 @@ var mainBody = document.body;
 // decorative fade in images //
 function FadeInImages(props) {
   const [isVisible, setVisible] = React.useState(false);
+  
   React.useEffect(() => {
     setVisible(true);
   }, []);
+
   return (
-    <div className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+    <div className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}>
       {props.children}
     </div>
   );
