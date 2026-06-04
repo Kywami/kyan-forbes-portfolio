@@ -34,26 +34,30 @@
   }
 }
 
-
 @keyframes gradientAni {
   0% {
-    /* Anchors the canvas so your screen starts completely submerged in the 0%-60% dark blue zone */
-    background-position: 200% 200%; 
+    /* Starts at the bottom-right */
+    background-position: 100% 100%;
+  }
+  50% {
+    /* Moves smoothly to the top-left */
+    background-position: 0% 0%;
   }
   100% {
-    /* Pulls the pattern up and out toward the top-left */
-    background-position: 0% 0%; 
+    /* Cycles seamlessly back to the bottom-right without a visible snap */
+    background-position: 100% 100%;
   }
 }
 
 /* BODY/TEXT
    */
-   
-html, body {
+
+html,
+body {
   margin: 0 !important;
   padding: 0 !important;
   width: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 p,
@@ -73,21 +77,21 @@ p,
   width: 100%;
   z-index: -1;
   pointer-events: none;
-  
-  /* FIXED: Changed to repeating-linear-gradient. 
-     This creates an infinite conveyor belt of your colors so it never hits a flat blue wall. */
- background-image: repeating-linear-gradient(
-    135deg, 
-    #09637E 0%,    /* Starts pure dark blue at the origin */
-    #09637E 60%,   /* Stays solid dark blue through the majority of the canvas */
-    #088395 78%,   /* Super gradual, smoky fade into mid-blue */
-    #7AB2B2 92%,   /* Soft fade into teal */
-    #EBF4F6 97%,   /* White ONLY peaks here, taking up almost no space */
-    #09637E 100%   /* Instantly drops back into dark blue so the tile connects seamlessly */
+
+  /* Using a standard linear-gradient with blended color stops. 
+    Removing the harsh percentage clamps ensures completely soft transitions with no lines.
+  */
+  background-image: linear-gradient(
+    135deg,
+    #09637e,
+    #088395,
+    #7ab2b2,
+    #ebf4f6,
+    #09637e
   );
-  background-size: 200% 200%;;
-  
-animation: gradientAni 45s linear infinite; 
+  background-size: 400% 400%;
+
+  animation: gradientAni 45s ease-in-out infinite;
 }
 
 /* BUTTONS
@@ -148,54 +152,54 @@ animation: gradientAni 45s linear infinite;
 /* SLIDING PHOTOS
     */
 .slidingPhotos {
-    z-index: 10;
- 
-    height: calc(100vh - 80px); 
-    margin-top: 80px; 
-    width: 100vw;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  z-index: 10;
+
+  height: calc(100vh - 80px);
+  margin-top: 80px;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .showcaseslide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .showcaseslide[data-active] {
-    opacity: 1;
-    z-index: 5;
+  opacity: 1;
+  z-index: 5;
 }
 
 .showcaseslide.just-activated {
-    animation: bounceIn 0.6s ease-in;
+  animation: bounceIn 0.6s ease-in;
 }
 
 .showcaseslide > ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .showcaseslide img {
-    pointer-events: none;
-    display: block;
-    width: auto;
+  pointer-events: none;
+  display: block;
+  width: auto;
 
-    max-width: 85%;
-    max-height: 60vh; 
-    object-fit: contain;
-    object-position: center;
-    position: relative;
-    bottom: unset;
+  max-width: 85%;
+  max-height: 60vh;
+  object-fit: contain;
+  object-position: center;
+  position: relative;
+  bottom: unset;
 }
 
 /*
@@ -232,21 +236,21 @@ animation: gradientAni 45s linear infinite;
 /* --- NAVBAR SECTION --- */
 
 .navbar {
-   position: fixed !important; 
-    top: 0 !important; 
-    left: 0;                    
-    width: 100% !important;                
-    z-index: 9999;
-    background-color: #97D5F2 !important; 
-    border-bottom: 3px solid #ead2ac !important;
-    padding: 10px 0;
-    margin: 0 !important;      
-    display: flex !important;
-    min-height: 60px; 
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  width: 100% !important;
+  z-index: 9999;
+  background-color: #97d5f2 !important;
+  border-bottom: 3px solid #ead2ac !important;
+  padding: 10px 0;
+  margin: 0 !important;
+  display: flex !important;
+  min-height: 60px;
 }
 
-.navbar-collapse, 
-.container-fluid, 
+.navbar-collapse,
+.container-fluid,
 .navbar-nav {
   background-color: transparent !important;
 }
@@ -258,7 +262,7 @@ animation: gradientAni 45s linear infinite;
 }
 
 .nav-link {
-  color: #05202B !important;
+  color: #05202b !important;
   font-family: "Rammetto One", sans-serif !important;
   font-size: 1.1rem;
   padding: 10px 20px !important;
@@ -296,98 +300,112 @@ animation: gradientAni 45s linear infinite;
 }
 
 /* Toggler Animations */
-.navbar-toggler.collapsed .top-bar { transform: translateY(-8px); }
-.navbar-toggler.collapsed .middle-bar { opacity: 1; }
-.navbar-toggler.collapsed .bottom-bar { transform: translateY(8px); }
+.navbar-toggler.collapsed .top-bar {
+  transform: translateY(-8px);
+}
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+}
+.navbar-toggler.collapsed .bottom-bar {
+  transform: translateY(8px);
+}
 
-.navbar-toggler:not(.collapsed) .top-bar { transform: rotate(45deg); }
-.navbar-toggler:not(.collapsed) .middle-bar { opacity: 0; }
-.navbar-toggler:not(.collapsed) .bottom-bar { transform: rotate(-45deg); } 
+.navbar-toggler:not(.collapsed) .top-bar {
+  transform: rotate(45deg);
+}
+.navbar-toggler:not(.collapsed) .middle-bar {
+  opacity: 0;
+}
+.navbar-toggler:not(.collapsed) .bottom-bar {
+  transform: rotate(-45deg);
+}
 
 .nav-link[style*="display: none"] {
-    display: none !important;
+  display: none !important;
 }
 
 .btn-icon-only {
-    width: 45px; 
-    height: 45px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
-.btn-icon-only img, 
+.btn-icon-only img,
 .btn-icon-only svg {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
 }
 
 .btn-icon-only:hover {
-    background-color: #eaba6b !important; 
-    transform: translateY(-3px);
+  background-color: #eaba6b !important;
+  transform: translateY(-3px);
 }
 
 .about-container {
-    margin-top: 180px !important; 
-    padding-top: 50px;
-    position: relative;
-    z-index: 10;
-    padding-bottom: 50px;
+  margin-top: 180px !important;
+  padding-top: 50px;
+  position: relative;
+  z-index: 10;
+  padding-bottom: 50px;
 }
 
 .about-container .row {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .about-container .card {
-    min-height: 500px; 
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
 }
 
 .about-container .card-img-top {
-    height: 350px; 
-    object-fit: cover; 
-    background-color: #ddd; 
+  height: 350px;
+  object-fit: cover;
+  background-color: #ddd;
 }
-  
+
 /* --- DECORATIVE SLIDE-IN IMAGES --- */
 .page-decorations {
   position: fixed;
-  top: 0;                 /* Spans the entire screen viewport height */
+  top: 0; /* Spans the entire screen viewport height */
   left: 0;
-  width: 100vw;     
-  height: 100vh;          
-  pointer-events: none; 
-  z-index: 99999;     
-} 
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+}
 
 .fade-in-section {
-  position: absolute;    /* Fixes layout context to stop elements from stacking at the bottom */
+  position: absolute; /* Fixes layout context to stop elements from stacking at the bottom */
   opacity: 0;
   visibility: hidden;
   /* Removed the rogue transform; syncs smooth progression perfectly */
-  transition: opacity 3s linear, transform 3s linear;
+  transition:
+    opacity 3s linear,
+    transform 3s linear;
 }
 
 /* RIGHT IMAGE: Stationed bottom-right side, slides straight horizontally from the right */
 .fade-in-section.from-right {
   right: 5%;
   bottom: 25%;
-  transform: translateX(50px);  /* Shifted outward to the right frame edge */
+  transform: translateX(50px); /* Shifted outward to the right frame edge */
 }
 
 /* LEFT IMAGE: Stationed top-left side, slides straight horizontally from the left */
 .fade-in-section.from-left {
-  left: 5%; 
-  top: 25%;                    /* High positioning logic verified */
+  left: 5%;
+  top: 25%; /* High positioning logic verified */
   transform: translateX(-50px); /* Shifted outward to the left frame edge */
 }
 
@@ -400,17 +418,13 @@ animation: gradientAni 45s linear infinite;
 
 .fade-in-section.is-visible {
   opacity: 1;
-  transform: translateX(0);    /* Resolves cleanly to standard coordinates */
+  transform: translateX(0); /* Resolves cleanly to standard coordinates */
   visibility: visible;
 }
 
 .fade-in-section img {
   display: block;
-  height: 96px;              
+  height: 96px;
   width: auto;
-  image-rendering: pixelated; 
+  image-rendering: pixelated;
 }
-
-
-
-
