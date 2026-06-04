@@ -83,12 +83,12 @@ p,
   width: 100%;
   z-index: -1;
   pointer-events: none;
-  background-image: linear-gradient(
-    135deg, /* Changed from 180deg to 135deg so colors sit diagonally */
-    #09637E 15%,
-    #088395 35%,
-    #7AB2B2 55%,
-    #EBF4F6 85% 
+  135deg, 
+    #09637E 0%,   
+    #09637E 45%,  
+    #088395 65%,  
+    #7AB2B2 85%,  
+    #EBF4F6 100% 
   );
   background-size: 400% 400%;
   animation: gradientAni 20s infinite ease-in-out alternate; 
