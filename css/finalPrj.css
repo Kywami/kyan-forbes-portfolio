@@ -388,12 +388,11 @@ p,
   transform: translateX(50px);
 }
 
-.pos-high {
-  margin: 20px;
+.top-offset {
+  margin-top: 20px;
 }
-
-.pos-low {
-  margin: 80px;
+.bottom-offset {
+  margin-top: 80px;
 }
 
 .fade-in-section.is-visible {
