@@ -382,19 +382,19 @@ p,
 
 .fade-in-section.from-right {
   right: 5%;
-  transform: translateX(-100vw);
+  transform: translateX(-100px);
 }
 
 .fade-in-section.from-left {
   left: 5%; 
-  transform: translateX(100vw); 
+  transform: translateX(100px); 
 }
 
 .top-offset {
-  margin-bottom: 60px;
+  margin: 20px;
 }
 .bottom-offset {
-  margin-bottom: 10px;
+  margin: 80px;
 }
 
 .fade-in-section.is-visible {
