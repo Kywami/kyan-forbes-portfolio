@@ -112,7 +112,7 @@ p,
 
   pointer-events: none;
 
-  background-image: radial-gradient(
+  background-image: linear-gradient(
     circle at 0% 0%,
     #005e80 0%,
     #004661 50%,
