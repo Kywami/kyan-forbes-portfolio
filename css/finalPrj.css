@@ -75,28 +75,28 @@ p,
   z-index: -1;
   pointer-events: none;
 
-  /* Set the dominant dark blue as the solid base background color */
+  /* Solid background fallback using the darkest blue */
   background-color: #09637e;
 
-  /* - Radial gradient anchored from the top left corner.
-    - Massive 40% to 80% spacing buffers ensure the browser spreads the color interpolation 
-      over a huge area, eliminating the harsh beam look captured in your screenshot.
-    - White (#ebf4f6) is dropped to a very low opacity (0.15) and blended softly so it acts 
-      as a subtle, passing ambient glow rather than a bright white streak.
+  /* - Radial gradient anchored perfectly from the top left corner.
+     - Updated to use ONLY your two requested colors: #09637e (darkest blue) and #7ab2b2 (second to last blue).
+     - Keeps the massive 50% to 85% spacing gaps so the two colors melt together with maximum softness.
+     - The transitioning color uses a delicate opacity setting (0.4) to maintain that subtle, ambient wash.
   */
   background-image: radial-gradient(
     circle at 0% 0%,
     rgba(9, 99, 126, 1) 0%,
-    /* Deep Blue Core */ rgba(8, 131, 149, 0.8) 40%,
-    /* Mid-Blue blend zone */ rgba(122, 178, 178, 0.6) 70%,
-    /* Teal blend zone */ rgba(235, 244, 246, 0.15) 90%,
-    /* Extremely faint white trailing accent glow */ rgba(9, 99, 126, 0) 100%
+    /* Darkest Blue Core */ rgba(9, 99, 126, 0.9) 50%,
+    /* Generous holding lane for the dark blue mass */ rgba(122, 178, 178, 0.4)
+      85%,
+    /* Second-to-last blue entering as a very soft, ambient transition */
+    rgba(9, 99, 126, 0) 100% /* Fades cleanly back into the base dark blue */
   );
 
-  /* Blown up to 300% to push the blend boundaries far beyond the viewport edges */
+  /* Blown up to 300% to pull the blend boundaries far beyond the viewport edges */
   background-size: 300% 300%;
 
-  /* ease-in-out gives it that slow, organic, breathing cadence seen in the reference video */
+  /* ease-in-out preserves the slow, organic, breathing cadence */
   animation: gradientAni 35s ease-in-out infinite;
 }
 
