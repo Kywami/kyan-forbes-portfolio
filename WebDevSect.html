@@ -55,13 +55,13 @@
         <ul data-pics>
             <li class="showcaseslide" data-active>
                 <div class="bottCont">
-                    <img src="img/girl.png" alt="Animation 1" />
+                    <img src="img/girl.png" onerror="this.src='https://placehold.co/600x400?text=Animation+1+Missing'" alt="Animation 1" />
                     <p class="caption">Character Animation</p>
                 </div>
             </li>
             <li class="showcaseslide">
                 <div class="bottCont">
-                    <img src="img/girl.png" alt="Animation 2" />
+                    <img src="img/girl.png" onerror="this.src='https://placehold.co/600x400?text=Animation+2+Missing'" alt="Animation 2" />
                     <p class="caption">Walk Cycle</p>
                 </div>
             </li>
@@ -84,7 +84,7 @@
       return () => clearTimeout(timer);
     }, []);
 
-const directionClass = props.direction || 'from-right';
+    const directionClass = props.direction || 'from-right';
     const customClass = props.className || '';
     const visibleClass = isVisible ? 'is-visible' : '';
       
@@ -98,25 +98,22 @@ const directionClass = props.direction || 'from-right';
   const rootElement = document.getElementById('react-decorations-root');
   if (rootElement) {
     const root = ReactDOM.createRoot(rootElement);
-   // --- FIX: Swap the directions and classes here so they match your CSS architecture ---
-root.render(
-  <React.Fragment>
-   
-    <FadeInImages direction="from-left" className="top-offset">
-      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/squirtle.png" alt="Shiny Squirtle sprite" />
-    </FadeInImages>
-    
-    <FadeInImages direction="from-right" className="bottom-offset">
-      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/bulbasaur.png" alt="Shiny Bulbasaur sprite" />
-    </FadeInImages>
-  </React.Fragment>
-);
+    root.render(
+      <React.Fragment>
+        <FadeInImages direction="from-left" className="top-offset">
+          <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/squirtle.png" alt="Shiny Squirtle sprite" />
+        </FadeInImages>
+        
+        <FadeInImages direction="from-right" className="bottom-offset">
+          <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/bulbasaur.png" alt="Shiny Bulbasaur sprite" />
+        </FadeInImages>
+      </React.Fragment>
+    );
   }
 </script>
 <script src="js/finalPrj.js"></script>
 </body>
 </html>
-
 
 
 
