@@ -381,18 +381,20 @@ p,
 }
 
 .fade-in-section.from-right {
-  transform: translateX(-50px);
+  right: 5%;
+  transform: translateX(-100vw);
 }
 
 .fade-in-section.from-left {
-  transform: translateX(50px); 
+  left: 5%; 
+  transform: translateX(-100vw); 
 }
 
 .top-offset {
-  margin-top: 20px;
+  margin-bottom: 60px;
 }
 .bottom-offset {
-  margin-top: 80px;
+  margin-bottom: 10px;
 }
 
 .fade-in-section.is-visible {
