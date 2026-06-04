@@ -88,8 +88,12 @@
       return () => clearTimeout(timer);
     }, []);
 
+const directionClass = props.direction || 'from-right';
+    const customClass = props.className || '';
+    const visibleClass = isVisible ? 'is-visible' : '';
+      
     return (
-      <div className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}>
+      <div className={`fade-in-section ${directionClass} ${customClass} ${visibleClass}`.trim()}>
         {props.children}
       </div>
     );
@@ -100,10 +104,10 @@
     const root = ReactDOM.createRoot(rootElement);
     root.render(
       <React.Fragment>
-        <FadeInImages>
+        <FadeInImages direction="from-right" className="top-offset">
           <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/squirtle.png" alt="Shiny Squirtle sprite" />
         </FadeInImages>
-        <FadeInImages>
+        <FadeInImages direction="from-left" className="bottom-offset">
           <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/bulbasaur.png" alt="Shiny Bulbasaur sprite" />
         </FadeInImages>
       </React.Fragment>
