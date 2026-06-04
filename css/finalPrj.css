@@ -36,13 +36,14 @@
 
 @keyframes gradientAni {
   0% {
-    /* Starts with the first wave group centered perfectly at the top-left corner */
-    background-position: 0% 0%;
+    /* Wave 1 begins radiating outward from the top-left corner */
+    background-size: 100% 100%;
   }
   100% {
-    /* Translates the gradient down and right by exactly one full repeating pattern tile.
-       This creates a smooth, one-way conveyor belt that never jumps or snaps. */
-    background-position: 200% 200%;
+    /* Wave 1 expands smoothly all the way out past the bottom right.
+       Because the color stops loop symmetrically, Wave 2 perfectly 
+       replaces it at the exact same pixel value, making the cycle infinite. */
+    background-size: 300% 300%;
   }
 }
 
@@ -83,26 +84,22 @@ p,
   background-image: radial-gradient(
     circle at 0% 0%,
     #09637e 0%,
-    /* Wave 1: Dark Blue enters first and dominates the core */ #09637e 12%,
-    #088395 24%,
-    /* Wide buffer lane for mid-blue */ #7ab2b2 36%,
-    /* Wide buffer lane for teal */ #ebf4f6 46%,
-    /* White peaks gently as a small trailing accent */ #09637e 50%,
-
-    /* Fades completely back into dark blue to close Wave 1 */
-    /* --- WAVE 2: CLONE FOR REPEATING LOOP TRANSITION --- */ #09637e 62%,
-    #088395 74%,
-    #7ab2b2 86%,
-    #ebf4f6 96%,
-    /* White peaks right at the trailing tail end of the tile */ #09637e 100%
-      /* Perfectly matches 0% so the loop reset is completely invisible */
+    /* Dark blue forms the solid core of the wave */ #09637e 30%,
+    /* Massive holding buffer so dark blue enters first and stays dominant */
+    #088395 55%,
+    /* Generous 25% buffer lane—colors melt completely into mid-blue */ #7ab2b2
+      75%,
+    /* Generous 20% buffer lane—softly dissolves into teal */ #ebf4f6 96%,
+    /* White is the absolute last color to arrive, entering in a very small amount */
+    #09637e 100%
+      /* Instantly drops back into the dark blue anchor to seamlessly loop */
   );
 
   /* Standard 200% tile stretching to allow the 0% to 200% translation to look infinite */
-  background-size: 200% 200%;
+  background-position: 0% 0%;
 
   /* 'linear' keeps the diagonal stream moving out of the corner at a uniform pace */
-  animation: gradientAni 60s linear infinite;
+  animation: gradientAni 50s linear infinite;
 }
 
 /* BUTTONS
