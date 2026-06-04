@@ -756,7 +756,7 @@ p,
 
   visibility: hidden;
 
-  transition: opacity 3s ease-out, transform 3s ease-out;
+transition: opacity 3s linear, transform 3s linear;
 
 }
 
