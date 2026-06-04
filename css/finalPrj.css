@@ -74,15 +74,14 @@ p,
   width: 100%;
   z-index: -1;
   pointer-events: none;
- background-image: linear-gradient(
+background-image: linear-gradient(
     135deg, 
-    #09637E 0%,   
-    #088395 35%,  
-    #7AB2B2 65%,  
-    #EBF4F6 85%, 
-    #09637E 100%  
+    #09637E 0%,    
+    #09637E 40%,  
+    #088395 65%,   
+    #7AB2B2 80%,   
+    #09637E 100%   
   );
-  
   background-size: 400% 400%;
   
 animation: gradientAni 25s cubic-bezier(0.42, 0, 0.58, 1) infinite; 
