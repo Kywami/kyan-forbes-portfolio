@@ -37,13 +37,12 @@
 
 @keyframes gradientAni {
   0% {
+   
     background-position: 0% 0%; 
   }
-  50% {
-    background-position: 100% 100%; 
-  }
   100% {
-    background-position: 0% 0%;
+
+    background-position: 200% 200%; 
   }
 }
 
@@ -77,14 +76,15 @@ p,
 background-image: linear-gradient(
     135deg, 
     #09637E 0%,    
-    #09637E 40%,  
+    #09637E 40%,   
     #088395 65%,   
     #7AB2B2 80%,   
+    #EBF4F6 93%,   
     #09637E 100%   
   );
-  background-size: 400% 400%;
+  background-size: 300% 300%;
   
-animation: gradientAni 25s cubic-bezier(0.42, 0, 0.58, 1) infinite; 
+animation: gradientAni 35s linear infinite;
 }
 
 /* BUTTONS
