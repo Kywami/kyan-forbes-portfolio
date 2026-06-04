@@ -388,8 +388,8 @@ p,
 
 .fade-in-section.from-left {
   left: 5%; 
-  top: 25%;
-  transform: translateX(100vw); 
+  top: 5%;                    
+  transform: translateY(-100vh);
 }
 
 .top-offset {
