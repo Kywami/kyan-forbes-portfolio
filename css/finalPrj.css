@@ -1,4 +1,4 @@
-keyframes bounceIn2 {
+@keyframes bounceIn2 {
   0%,
   20%,
   50%,
@@ -112,7 +112,14 @@ p,
 
   pointer-events: none;
 
-  background-image: radial-gradient(circle at 0% 0%, #136e8f 0%, #004661 50%);
+  background-image: linear-gradient(
+    180deg,
+    #5cacc5 33%,
+
+    #005e80 66%,
+
+    #013244 100%
+  );
 
   background-size: 200% 200%;
 
@@ -597,7 +604,7 @@ p,
 
   transform: translateX(0);
 
-  transform: translateX(0);
+  transform: translateX(0); /* Resolves cleanly to standard coordinates */
   visibility: visible;
 }
 
