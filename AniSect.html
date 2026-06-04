@@ -78,16 +78,18 @@
     const [isVisible, setVisible] = React.useState(false);
     
     React.useEffect(() => {
-      // Force the browser layout engine to register the initial layout first
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setVisible(true);
-        });
-      });
+      const timer = setTimeout(() => {
+        setVisible(true);
+      }, 100);
+      return () => clearTimeout(timer);
     }, []);
 
+const directionClass = props.direction || 'from-right';
+    const customClass = props.className || '';
+    const visibleClass = isVisible ? 'is-visible' : '';
+      
     return (
-      <div className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}>
+      <div className={`fade-in-section ${directionClass} ${customClass} ${visibleClass}`.trim()}>
         {props.children}
       </div>
     );
@@ -96,16 +98,19 @@
   const rootElement = document.getElementById('react-decorations-root');
   if (rootElement) {
     const root = ReactDOM.createRoot(rootElement);
-    root.render(
-      <React.Fragment>
-        <FadeInImages>
-          <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/charmander.png" alt="Shiny Charmander sprite" />
-        </FadeInImages>
-        <FadeInImages>
-          <img src="https://img.pokemondb.net/sprites/black-white/normal/venusaur-f.png" alt="Venusaur sprite" />
-        </FadeInImages>
-      </React.Fragment>
-    );
+   // --- FIX: Swap the directions and classes here so they match your CSS architecture ---
+root.render(
+  <React.Fragment>
+   
+    <FadeInImages direction="from-left" className="top-offset">
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/squirtle.png" alt="Shiny Squirtle sprite" />
+    </FadeInImages>
+    
+    <FadeInImages direction="from-right" className="bottom-offset">
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/bulbasaur.png" alt="Shiny Bulbasaur sprite" />
+    </FadeInImages>
+  </React.Fragment>
+);
   }
 </script>
 <script src="js/finalPrj.js"></script>
