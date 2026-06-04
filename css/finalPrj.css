@@ -34,25 +34,20 @@
   }
 }
 
-/* 1. REGISTER THE CUSTOM PROPERTY FOR THE BROWSER ENGINE */
-@property --wave-progress {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
-
-/* 2. MAINTAINED YOUR EXACT KEYFRAME NAME WITH TWO-KEYFRAME LOGIC */
 @keyframes gradientAni {
   0% {
-    --wave-progress: 0%;
+    /* Wave Group 1 starts perfectly at the top-left corner */
+    background-position: 0% 0%;
   }
   100% {
-    --wave-progress: 100%;
+    /* Pulls the canvas down and right by exactly one full pattern size.
+       This creates a continuous, one-way conveyor belt from top-left to bottom-right. */
+    background-position: 200% 200%;
   }
 }
 
 /* BODY/TEXT
-    */
+   */
 
 html,
 body {
@@ -70,7 +65,7 @@ p,
 }
 
 /* BACKGROUND
-    */
+   */
 .gradientBack {
   position: fixed;
   top: 0;
@@ -80,42 +75,40 @@ p,
   z-index: -1;
   pointer-events: none;
 
-  /* 3. FIXED COLOR DISTRIBUTION AND SEAMLESS WRAP-AROUND LOOP
-     - Spaced out with massive 25% mathematical gaps so colors enter completely one by one.
-     - Dark blue holds the massive core entries to remain dominant.
-     - White is kept as a minimal trailing accent highlight at the end of each sequence.
+  /* - 135deg lines up perfectly with the movement path to guarantee a true diagonal flow.
+     - Massive, buffered color stops ensure they enter completely one at a time.
+     - Dark blue holds the vast majority of the real estate to remain dominant.
+     - White is at the tail end of each wave group right before dropping back into darkness.
+     - The entire sequence is duplicated from 50% to 100% to create a seamless loop snap-back.
   */
-  background-image: radial-gradient(
-    circle at 0% 0%,
+  background-image: linear-gradient(
+    135deg,
+    #09637e 0%,
+    #09637e 20%,
+    /* Wave 1: Solid Dark Blue core enters first */ #088395 35%,
+    /* 15% Buffer: Soft transition into mid-blue */ #7ab2b2 46%,
+    /* 11% Buffer: Soft transition into teal */ #ebf4f6 49%,
 
-    /* FIRST COMPLETE WAVE WAVEFRONT */ #09637e
-      calc(var(--wave-progress) - 100%),
-    #09637e calc(var(--wave-progress) - 70%),
-    /* Dominant Dark Blue Base */ #088395 calc(var(--wave-progress) - 45%),
-    /* Soft fade into Mid-Blue */ #7ab2b2 calc(var(--wave-progress) - 20%),
-    /* Soft fade into Teal */ #ebf4f6 calc(var(--wave-progress) - 4%),
-    /* White is the absolute tail end highlight */ #09637e var(--wave-progress),
-    /* Dissolves safely back into dark blue */
-    /* SECOND CONCURRENT WAVE (Perfect tracking clone for seamlessness) */
-    #09637e calc(var(--wave-progress) + 30%),
-    #088395 calc(var(--wave-progress) + 55%),
-    /* Enters cleanly behind the dark blue core */ #7ab2b2
-      calc(var(--wave-progress) + 80%),
-    /* Teal tracking entry */ #ebf4f6 calc(var(--wave-progress) + 96%),
-    /* White trailing accent */ #09637e calc(var(--wave-progress) + 100%)
-      /* Flawless loop anchor point */
+    /* White is a tiny trailing accent highlight at the tail end */
+    /* --- SEAMLESS CLONE FOR INFINITE WRAP-AROUND --- */ #09637e 50%,
+    /* Instantly transitions back to dark blue to end Wave 1 and start Wave 2 */
+    #09637e 70%,
+    #088395 85%,
+    #7ab2b2 96%,
+    #ebf4f6 99%,
+    /* White trailing accent peaks right before the tile reset */ #09637e 100%
+      /* Perfectly matches the 0% pixel state so the loop never breaks */
   );
 
-  /* Keeps canvas fixed to prevent the wall/screen sliding behavior */
-  background-size: 100% 100%;
-  background-position: 0% 0%;
+  /* Set to 200% 200% so the diagonal animation has exactly one tile layout to translate across */
+  background-size: 200% 200%;
 
   /* 'linear' keeps the diagonal stream moving out of the corner at a uniform pace */
-  animation: gradientAni 50s linear infinite;
+  animation: gradientAni 60s linear infinite;
 }
 
 /* BUTTONS
-    */
+   */
 .goBack {
   position: absolute;
   top: 20px;
@@ -138,7 +131,7 @@ p,
 }
 
 /* CAPTION / BOTTOM CONTENT
-     */
+    */
 .bottCont {
   display: flex;
   flex-direction: column;
@@ -170,7 +163,7 @@ p,
 }
 
 /* SLIDING PHOTOS
-     */
+    */
 .slidingPhotos {
   z-index: 10;
 
