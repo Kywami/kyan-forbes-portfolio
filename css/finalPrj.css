@@ -81,15 +81,15 @@ p,
   /* Using a standard linear-gradient with blended color stops. 
     Removing the harsh percentage clamps ensures completely soft transitions with no lines.
   */
-  background-image: linear-gradient(
-    135deg,
+  background-image: radial-gradient(
+    circle at bottom right,
     #09637e 0%,
-    #09637e 75%,
-    /* Holds the dark blue solid for three-quarters of the strip */ #088395 85%,
-    /* Soft transition into the mid-blue */ #7ab2b2 93%,
-    /* Soft transition into the teal */ #ebf4f6 97%,
-    /* White peaks here briefly in a very small amount */ #09637e 100%
-      /* Immediately fades back out to the dark blue */
+    /* Dark blue is the dense core */ #09637e 35%,
+    /* Dominant base weight */ #088395 55%,
+    /* Generous blend into mid-blue */ #7ab2b2 75%,
+    /* Generous blend into teal */ #ebf4f6 90%,
+    /* White shows up clearly as a soft, outer glowing wave */ #09637e 100%
+      /* Fades back into the dark blue at the very edge */
   );
   background-size: 400% 400%;
 
