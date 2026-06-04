@@ -768,7 +768,7 @@ p,
 
   bottom: 25%;
 
-  transform: translateX(-100vw);
+  transform: translateX(-50px);
 
 }
 
@@ -780,7 +780,7 @@ p,
 
   top: 25%;
 
-  transform: translateX(100vw); 
+  transform: translateX(50px); 
 
 }
 
