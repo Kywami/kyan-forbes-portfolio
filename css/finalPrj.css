@@ -380,12 +380,12 @@ p,
   transition: opacity 3s ease-out, transform 3s ease-out;
 }
 
-.fade-in-right {
-  transform: translateX(-50px);
+.fade-in-section.from-right {
+  transform: translateX(50px);
 }
 
-.fade-in-left {
-  transform: translateX(50px);
+.fade-in-section.from-left {
+  transform: translateX(-50px); 
 }
 
 .top-offset {
