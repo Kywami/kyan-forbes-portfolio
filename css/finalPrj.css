@@ -83,11 +83,13 @@ p,
   */
   background-image: linear-gradient(
     135deg,
-    #09637e,
-    #088395,
-    #7ab2b2,
-    #ebf4f6,
-    #09637e
+    #09637e 0%,
+    #09637e 75%,
+    /* Holds the dark blue solid for three-quarters of the strip */ #088395 85%,
+    /* Soft transition into the mid-blue */ #7ab2b2 93%,
+    /* Soft transition into the teal */ #ebf4f6 97%,
+    /* White peaks here briefly in a very small amount */ #09637e 100%
+      /* Immediately fades back out to the dark blue */
   );
   background-size: 400% 400%;
 
