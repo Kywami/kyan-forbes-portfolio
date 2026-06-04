@@ -37,13 +37,11 @@
 
 @keyframes gradientAni {
   0% {
-    /* Starts with the pattern shifted down toward the bottom-right */
+    /* Anchors the canvas so your screen starts completely submerged in the 0%-60% dark blue zone */
     background-position: 200% 200%; 
   }
   100% {
-    /* Pulls it all the way up through the top-left corner.
-       Because we are using a repeating gradient, moving exactly 200% 
-       means the next wave aligns perfectly with the old one, making the loop invisible. */
+    /* Pulls the pattern up and out toward the top-left */
     background-position: 0% 0%; 
   }
 }
@@ -78,18 +76,18 @@ p,
   
   /* FIXED: Changed to repeating-linear-gradient. 
      This creates an infinite conveyor belt of your colors so it never hits a flat blue wall. */
-  background-image: repeating-linear-gradient(
+ background-image: repeating-linear-gradient(
     135deg, 
-    #09637E 0%,    
-    #09637E 30%,  /* Dark blue takes up the vast majority of the loop */
-    #088395 55%,  /* Ultra-wide spacing guarantees a super-soft blend */
-    #7AB2B2 75%,   
-    #EBF4F6 90%,  /* White gets the absolute least amount of screen time */
-    #09637E 100%  /* Loops back into dark blue flawlessly */
+    #09637E 0%,    /* Starts pure dark blue at the origin */
+    #09637E 60%,   /* Stays solid dark blue through the majority of the canvas */
+    #088395 78%,   /* Super gradual, smoky fade into mid-blue */
+    #7AB2B2 92%,   /* Soft fade into teal */
+    #EBF4F6 97%,   /* White ONLY peaks here, taking up almost no space */
+    #09637E 100%   /* Instantly drops back into dark blue so the tile connects seamlessly */
   );
   background-size: 200% 200%;;
   
-animation: gradientAni 40s linear infinite; 
+animation: gradientAni 45s linear infinite; 
 }
 
 /* BUTTONS
