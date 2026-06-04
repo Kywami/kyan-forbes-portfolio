@@ -85,14 +85,6 @@ p,
   z-index: -1;
   pointer-events: none;
 
-  /* Solid background color serving as our dark base */
-  background-color: #005e80;
-
-  /* - Radial gradient originating out of the top-left corner.
-     - Excludes white and yellow entirely to isolate a single, pure blue color scheme.
-     - Blends the solid dark blue (#005e80) with a softer, lower-opacity variation of itself.
-     - Using wide color stops (0% to 40% to 100%) forces a very low-contrast, ultra-soft transition.
-  */
   background-image: radial-gradient(
     circle at 0% 0%,
     rgba(0, 94, 128, 1) 0%,
