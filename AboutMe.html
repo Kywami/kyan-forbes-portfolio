@@ -39,12 +39,11 @@
 </div>
 
 <div class="container about-container">
-  <div class="row align-items-start">
-    <div class="col-md-5 mb-4">
+  <div class="row align-items-stretch"> <div class="col-lg-4 col-md-5 mb-4">
       <div class="card shadow border-0 h-100 profile-card">
         <img src="img/your-headshot.jpg" class="card-img-top headshot-img" alt="Kyan's Headshot">
         
-        <div class="card-body text-center">
+        <div class="card-body text-center d-flex flex-column justify-content-center">
           <h5 class="card-title rammetto-one-regular">Connect</h5>
           <p class="card-text">Digital Media Student @ UCF</p>
           
@@ -62,6 +61,19 @@
         </div>
       </div>
     </div> 
+    
+    <div class="col-lg-8 col-md-7 mb-4">
+      <div class="h-100 p-4 d-flex flex-column justify-content-center" style="background-color: rgba(255, 255, 255, 0.85); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <h1 class="rammetto-one-regular mb-4">About Me</h1>
+        <div class="bio-text">
+          <p>Hi, my name is <strong>Kyan</strong>. I'm a junior at <strong>UCF</strong> majoring in <strong>Digital Media: Interactive/Web Design</strong> with a minor in Studio Art.</p>
+          <p>I currently work as an <strong>OPS Web Development assistant</strong> at UCF. My interests lie in the intersection of physical and digital media, including but not limited to <strong>Animation</strong> and <strong>Web Design</strong>.</p>
+        </div> 
+      </div> 
+    </div> 
+
+  </div>
+</div>
     
     <div class="col-md-7">
       <h1 class="rammetto-one-regular mb-4">About Me</h1>
@@ -102,16 +114,19 @@ const directionClass = props.direction || 'from-right';
   const rootElement = document.getElementById('react-decorations-root');
   if (rootElement) {
     const root = ReactDOM.createRoot(rootElement);
-    root.render(
-      <React.Fragment>
-        <FadeInImages direction="from-right" className="top-offset">
-          <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/squirtle.png" alt="Shiny Squirtle sprite" />
-        </FadeInImages>
-        <FadeInImages direction="from-left" className="bottom-offset">
-          <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/bulbasaur.png" alt="Shiny Bulbasaur sprite" />
-        </FadeInImages>
-      </React.Fragment>
-    );
+   // --- FIX: Swap the directions and classes here so they match your CSS architecture ---
+root.render(
+  <React.Fragment>
+   
+    <FadeInImages direction="from-left" className="top-offset">
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/squirtle.png" alt="Shiny Squirtle sprite" />
+    </FadeInImages>
+    
+    <FadeInImages direction="from-right" className="bottom-offset">
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/bulbasaur.png" alt="Shiny Bulbasaur sprite" />
+    </FadeInImages>
+  </React.Fragment>
+);
   }
 </script>
 
