@@ -36,15 +36,16 @@
 
 @keyframes gradientAni {
   0% {
-    /* Starts with the center of the first wave group in the top-left */
+    /* Starts with the first wave group centered perfectly at the top-left corner */
     background-position: 0% 0%;
   }
   100% {
-    /* Shifts the entire coordinate system diagonally by exactly one full tile length.
-       This forces the waves to travel seamlessly from top-left to bottom-right. */
+    /* Translates the gradient down and right by exactly one full repeating pattern tile.
+       This creates a smooth, one-way conveyor belt that never jumps or snaps. */
     background-position: 200% 200%;
   }
 }
+
 /* BODY/TEXT
    */
 
@@ -74,28 +75,33 @@ p,
   z-index: -1;
   pointer-events: none;
 
-  /* Using a standard linear-gradient with blended color stops. 
-    Removing the harsh percentage clamps ensures completely soft transitions with no lines.
+  /* - Origin locked at 'circle at 0% 0%' so colors radiate outward from the top-left.
+     - Massive, buffered color stops (12% to 15% gaps) ensure complete, smoky dissolution.
+     - White (#EBF4F6) acts strictly as a minor trailing accent right before the dark blue resets.
+     - Symmetrical sequence duplication ensures the 100% keyframe perfectly matches the 0% keyframe.
   */
   background-image: radial-gradient(
-    ellipse at top left,
+    circle at 0% 0%,
     #09637e 0%,
-    /* Wave 1: Dark Blue enters first and dominates */ #09637e 15%,
-    #088395 25%,
-    /* Wide 10% gap for ultra-soft transition */ #7ab2b2 35%,
-    /* Wide 10% gap into Teal */ #ebf4f6 44%,
-    /* White is the absolute last color of the wave */ #09637e 50%,
+    /* Wave 1: Dark Blue enters first and dominates the core */ #09637e 12%,
+    #088395 24%,
+    /* Wide buffer lane for mid-blue */ #7ab2b2 36%,
+    /* Wide buffer lane for teal */ #ebf4f6 46%,
+    /* White peaks gently as a small trailing accent */ #09637e 50%,
 
-    /* Soft transition back to Dark Blue to start Wave 2 */
-    /* --- PERFECT CLONE FOR SEAMLESS WRAP-AROUND --- */ #09637e 65%,
-    #088395 75%,
-    #7ab2b2 85%,
-    #ebf4f6 94%,
-    /* White peaks here at the very end of the second wave */ #09637e 100%
-      /* Instantly matches 0% so the loop reset is completely invisible */
+    /* Fades completely back into dark blue to close Wave 1 */
+    /* --- WAVE 2: CLONE FOR REPEATING LOOP TRANSITION --- */ #09637e 62%,
+    #088395 74%,
+    #7ab2b2 86%,
+    #ebf4f6 96%,
+    /* White peaks right at the trailing tail end of the tile */ #09637e 100%
+      /* Perfectly matches 0% so the loop reset is completely invisible */
   );
+
+  /* Standard 200% tile stretching to allow the 0% to 200% translation to look infinite */
   background-size: 200% 200%;
 
+  /* 'linear' keeps the diagonal stream moving out of the corner at a uniform pace */
   animation: gradientAni 60s linear infinite;
 }
 
