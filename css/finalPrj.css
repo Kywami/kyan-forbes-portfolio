@@ -37,13 +37,13 @@
 
 @keyframes gradientAni {
   0% {
-    background-position: 0% 0%; /* Top-Left corner */
+    background-position: 0% 0%; 
   }
   50% {
-    background-position: 100% 100%; /* Sways all the way to Bottom-Right */
+    background-position: 100% 100%; 
   }
   100% {
-    background-position: 0% 0%; /* Glides gracefully back to Top-Left */
+    background-position: 0% 0%;
   }
 }
 
