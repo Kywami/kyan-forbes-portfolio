@@ -37,13 +37,13 @@
 
 @keyframes gradientAni {
   0% {
-    /* Focuses the bright color blend down in the bottom-right corner */
-    background-position: 100% 100%; 
+    /* Starts with the pattern shifted down toward the bottom-right */
+    background-position: 200% 200%; 
   }
   100% {
-    /* Pulls the giant color cloud entirely up and out of the top-left corner.
-       Because the outer boundary of the canvas is 100% solid dark blue (#09637E),
-       the reset back to the bottom is perfectly seamless and invisible. */
+    /* Pulls it all the way up through the top-left corner.
+       Because we are using a repeating gradient, moving exactly 200% 
+       means the next wave aligns perfectly with the old one, making the loop invisible. */
     background-position: 0% 0%; 
   }
 }
@@ -75,16 +75,19 @@ p,
   width: 100%;
   z-index: -1;
   pointer-events: none;
-background: #09637E; 
-  background-image: radial-gradient(
-    circle at 80% 80%, /* Starts the heart of the color blend toward the bottom corner */
-    #EBF4F6 0%,        /* Pure white center (smallest coverage) */
-    #7AB2B2 25%,       /* Softly dissolves into teal */
-    #088395 50%,       /* Deepens into mid-blue */
-    #09637E 80%,       
-    #09637E 100%
+  
+  /* FIXED: Changed to repeating-linear-gradient. 
+     This creates an infinite conveyor belt of your colors so it never hits a flat blue wall. */
+  background-image: repeating-linear-gradient(
+    135deg, 
+    #09637E 0%,    
+    #09637E 30%,  /* Dark blue takes up the vast majority of the loop */
+    #088395 55%,  /* Ultra-wide spacing guarantees a super-soft blend */
+    #7AB2B2 75%,   
+    #EBF4F6 90%,  /* White gets the absolute least amount of screen time */
+    #09637E 100%  /* Loops back into dark blue flawlessly */
   );
-  background-size: 400% 400%;
+  background-size: 200% 200%;;
   
 animation: gradientAni 40s linear infinite; 
 }
