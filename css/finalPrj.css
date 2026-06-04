@@ -34,19 +34,15 @@
   }
 }
 
-/* 1. REGISTER THE VARIABLE TO EMULATE NATIVE TRACKING OVER TIME */
-@property --wave-progress {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
-
 @keyframes gradientAni {
   0% {
-    --wave-progress: 0%;
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
   }
   100% {
-    --wave-progress: 100%;
+    background-position: 0% 0%;
   }
 }
 
@@ -79,37 +75,29 @@ p,
   z-index: -1;
   pointer-events: none;
 
-  /* 2. RADIAL WAVE ENGINE USING MATHEMATICAL OFFSETS
-     - Spaced out using wide 25% to 30% calculation windows so they enter distinctly one by one.
-     - Dark blue dominates the center mass.
-     - White is kept as a minimal trailing accent highlight at the end of each sequence.
+  /* Set the dominant dark blue as the solid base background color */
+  background-color: #09637e;
+
+  /* - Radial gradient anchored from the top left corner.
+    - Massive 40% to 80% spacing buffers ensure the browser spreads the color interpolation 
+      over a huge area, eliminating the harsh beam look captured in your screenshot.
+    - White (#ebf4f6) is dropped to a very low opacity (0.15) and blended softly so it acts 
+      as a subtle, passing ambient glow rather than a bright white streak.
   */
   background-image: radial-gradient(
     circle at 0% 0%,
-
-    /* FIRST WAVEFRONT GROUP */ #09637e calc(var(--wave-progress) - 100%),
-    #09637e calc(var(--wave-progress) - 70%),
-    /* Dominant Dark Blue Base */ #088395 calc(var(--wave-progress) - 45%),
-    /* Soft fade into Mid-Blue */ #7ab2b2 calc(var(--wave-progress) - 20%),
-    /* Soft fade into Teal */ #ebf4f6 calc(var(--wave-progress) - 4%),
-    /* White is the absolute tail end highlight */ #09637e var(--wave-progress),
-    /* Dissolves safely back into dark blue */
-    /* SECOND CONCURRENT WAVEFRONT (Perfect tracking clone for seamlessness) */
-    #09637e calc(var(--wave-progress) + 30%),
-    #088395 calc(var(--wave-progress) + 55%),
-    /* Enters cleanly behind the dark blue core */ #7ab2b2
-      calc(var(--wave-progress) + 80%),
-    /* Teal tracking entry */ #ebf4f6 calc(var(--wave-progress) + 96%),
-    /* White trailing accent */ #09637e calc(var(--wave-progress) + 100%)
-      /* Flawless loop anchor point */
+    rgba(9, 99, 126, 1) 0%,
+    /* Deep Blue Core */ rgba(8, 131, 149, 0.8) 40%,
+    /* Mid-Blue blend zone */ rgba(122, 178, 178, 0.6) 70%,
+    /* Teal blend zone */ rgba(235, 244, 246, 0.15) 90%,
+    /* Extremely faint white trailing accent glow */ rgba(9, 99, 126, 0) 100%
   );
 
-  /* Lock size and position static to eliminate any sliding artifacts */
-  background-size: 100% 100%;
-  background-position: 0% 0%;
+  /* Blown up to 300% to push the blend boundaries far beyond the viewport edges */
+  background-size: 300% 300%;
 
-  /* 'linear' keeps the diagonal stream moving out of the corner at a uniform pace */
-  animation: gradientAni 50s linear infinite;
+  /* ease-in-out gives it that slow, organic, breathing cadence seen in the reference video */
+  animation: gradientAni 35s ease-in-out infinite;
 }
 
 /* BUTTONS
