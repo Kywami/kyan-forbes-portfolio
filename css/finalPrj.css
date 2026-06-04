@@ -37,10 +37,12 @@
 
 @keyframes gradientAni {
   0% {
-    background-position: 0% 0%;
+    /* Starts at the top-left portion of the canvas */
+    background-position: 0% 0%; 
   }
   100% {
-    background-position: -200% 0%; 
+    /* Shifts both X and Y to pull the gradient diagonally to the bottom-right */
+    background-position: 150% 150%; 
   }
 }
 
@@ -72,16 +74,17 @@ p,
   z-index: -1;
   pointer-events: none;
  background-image: linear-gradient(
-    90deg, 
-    #09637E 0%,    #09637E 30%,  
-    #088395 45%,   
-    #7AB2B2 60%,   
-    #EBF4F6 75%,   #EBF4F6 80%,  
-    #7AB2B2 90%,   
-    #088395 100%                 
+    135deg, 
+    #09637E 0%,    #09637E 25%,  
+    #088395 40%,   
+    #7AB2B2 55%,   
+    #EBF4F6 70%,   #EBF4F6 75%,  
+    #7AB2B2 85%,   
+    #088395 95%,
+    #09637E 100%              
   );
   
-  background-size: 200% 100%;
+  background-size: 300% 300%;
  animation: gradientAni 25s linear infinite;; 
 }
 
