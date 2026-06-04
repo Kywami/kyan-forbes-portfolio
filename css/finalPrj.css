@@ -37,12 +37,13 @@
 
 @keyframes gradientAni {
   0% {
-    /* Starts at the top-left portion of the canvas */
-    background-position: 0% 0%; 
+    background-position: 0% 0%; /* Top-Left corner */
+  }
+  50% {
+    background-position: 100% 100%; /* Sways all the way to Bottom-Right */
   }
   100% {
-    /* Shifts both X and Y to pull the gradient diagonally to the bottom-right */
-    background-position: 150% 150%; 
+    background-position: 0% 0%; /* Glides gracefully back to Top-Left */
   }
 }
 
@@ -75,17 +76,16 @@ p,
   pointer-events: none;
  background-image: linear-gradient(
     135deg, 
-    #09637E 0%,    #09637E 25%,  
-    #088395 40%,   
-    #7AB2B2 55%,   
-    #EBF4F6 70%,   #EBF4F6 75%,  
-    #7AB2B2 85%,   
-    #088395 95%,
-    #09637E 100%              
+    #09637E 0%,   
+    #088395 35%,  
+    #7AB2B2 65%,  
+    #EBF4F6 85%, 
+    #09637E 100%  
   );
   
-  background-size: 300% 300%;
- animation: gradientAni 25s linear infinite;; 
+  background-size: 400% 400%;
+  
+animation: gradientAni 25s cubic-bezier(0.42, 0, 0.58, 1) infinite; 
 }
 
 /* BUTTONS
