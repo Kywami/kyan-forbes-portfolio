@@ -40,11 +40,11 @@
     background-position: 0% 0%;
   }
   100% {
-    /* Moves the background diagonally downward and right by exactly one full pattern size */
+    /* Moves diagonally down and right by exactly one full tile size,
+       creating a perfectly seamless, infinite one-way stream. */
     background-position: 200% 200%;
   }
 }
-
 /* BODY/TEXT
    */
 
@@ -77,19 +77,26 @@ p,
   /* Using a standard linear-gradient with blended color stops. 
     Removing the harsh percentage clamps ensures completely soft transitions with no lines.
   */
-  background-image: radial-gradient(
-    circle at bottom right,
+  background-image: linear-gradient(
+    145deg,
     #09637e 0%,
-    /* Dark blue is the dense core */ #09637e 35%,
-    /* Dominant base weight */ #088395 55%,
-    /* Generous blend into mid-blue */ #7ab2b2 75%,
-    /* Generous blend into teal */ #ebf4f6 90%,
-    /* White shows up clearly as a soft, outer glowing wave */ #09637e 100%
-      /* Fades back into the dark blue at the very edge */
-  );
-  background-size: 400% 400%;
+    #09637e 20%,
+    /* Solid Dark Blue entry */ #088395 35%,
+    /* Ultra-soft dissolve into Mid-Blue */ #7ab2b2 45%,
+    /* Ultra-soft dissolve into Teal */ #ebf4f6 48%,
 
-  animation: gradientAni 45s ease-in-out infinite;
+    /* Tiny sliver of White at the very tail end */
+    /* --- LOOP DUPLICATION BOUNDARY --- */ #09637e 50%,
+    /* Instantly transitions back to Dark Blue to start the next wave */ #09637e
+      70%,
+    #088395 85%,
+    #7ab2b2 95%,
+    #ebf4f6 98%,
+    #09637e 100% /* Matches 0% perfectly for a seamless snap-back */
+  );
+  background-size: 200% 200%;
+
+  animation: gradientAni 55s linear infinite;
 }
 
 /* BUTTONS
