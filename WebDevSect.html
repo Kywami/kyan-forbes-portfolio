@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Web Development Portfolio</title>
+    <title>Web Development & Design Portfolio</title>
     
-    <link rel="stylesheet" type="text/css" href="css/finalPrj.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/finalPrj.css" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-     <a class="navbar-brand nav-link" href="AboutMe.html">About Me</a>
+        <a class="navbar-brand nav-link" href="AboutMe.html">About Me</a>
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="toggler-icon top-bar"></span>
             <span class="toggler-icon middle-bar"></span>
@@ -22,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="WebDevSect.html">Web Dev</a>
+                <a class="nav-link" href="WebDevSect.html">Web Development</a>
                 <a class="nav-link" href="ArtSect.html">Artwork</a>
                 <a class="nav-link" href="AniSect.html">Animation</a>
                 <a class="nav-link" href="PixlArtSect.html">Pixel Art</a>
@@ -38,7 +43,9 @@
         <div class="shape0 shape33"></div>
         <div class="shape0 shape44"></div>
     </div>
-</div> <button onclick="window.location.href='index.html'" class="goBack"> &#8634; </button>
+</div>
+
+<button onclick="window.location.href='index.html'" class="goBack"> &#8634; </button>
 
 <section aria-label="Animation">
     <div class="slidingPhotos" data-showcaseslide>
@@ -48,31 +55,64 @@
         <ul data-pics>
             <li class="showcaseslide" data-active>
                 <div class="bottCont">
-                    <img src="img/nfdjty.jpg" alt="A town conversing">
-                  <p class="caption">
-                        <a href="https://yukochow.itch.io/my-sanctuary" target="_blank" rel="noopener noreferrer">My Sanctuary ↗</a>
-                    </p>
-        
-                    <p>Summer 2025</p>
-                </p>
+                    <img src="img/girl.png" alt="Animation 1" />
+                    <p class="caption">Character Animation</p>
                 </div>
             </li>
             <li class="showcaseslide">
                 <div class="bottCont">
-                    <img src="img/legendaries (2).png">
-                     <p class="caption">
-                    <a href="https://kywami.github.io/kyan-forbes-portfolio/legendaries.html"target="_blank" rel="noopener noreferrer">Look at these Legendaries</a>
-                    </p>
-                    <p>Fall 2025</p>
-
-                    </p>
+                    <img src="img/girl.png" alt="Animation 2" />
+                    <p class="caption">Walk Cycle</p>
                 </div>
             </li>
         </ul>
     </div>
 </section>
 
+<div class="page-decorations" id="react-decorations-root"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/babel">
+  function FadeInImages(props) {
+    const [isVisible, setVisible] = React.useState(false);
+    
+    React.useEffect(() => {
+      const timer = setTimeout(() => {
+        setVisible(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }, []);
+
+const directionClass = props.direction || 'from-right';
+    const customClass = props.className || '';
+    const visibleClass = isVisible ? 'is-visible' : '';
+      
+    return (
+      <div className={`fade-in-section ${directionClass} ${customClass} ${visibleClass}`.trim()}>
+        {props.children}
+      </div>
+    );
+  }
+
+  const rootElement = document.getElementById('react-decorations-root');
+  if (rootElement) {
+    const root = ReactDOM.createRoot(rootElement);
+   // --- FIX: Swap the directions and classes here so they match your CSS architecture ---
+root.render(
+  <React.Fragment>
+   
+    <FadeInImages direction="from-left" className="top-offset">
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/squirtle.png" alt="Shiny Squirtle sprite" />
+    </FadeInImages>
+    
+    <FadeInImages direction="from-right" className="bottom-offset">
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/shiny/bulbasaur.png" alt="Shiny Bulbasaur sprite" />
+    </FadeInImages>
+  </React.Fragment>
+);
+  }
+</script>
 <script src="js/finalPrj.js"></script>
 </body>
 </html>
