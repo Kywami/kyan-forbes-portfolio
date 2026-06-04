@@ -5,14 +5,11 @@
   80%,
   100% {
     transform: translateX(0);
-
     opacity: 1;
   }
-
   40% {
     transform: translateX(-20px);
   }
-
   60% {
     transform: translateX(-5px);
   }
@@ -21,25 +18,18 @@
 @keyframes bounceIn {
   0% {
     transform: translateX(-60px) scale(0.95);
-
     opacity: 0;
   }
-
   40% {
     transform: translateX(-30px) scale(1.02);
-
     opacity: 0.6;
   }
-
   70% {
     transform: translateX(-10px) scale(1);
-
     opacity: 0.9;
   }
-
   100% {
     transform: translateX(0) scale(1);
-
     opacity: 1;
   }
 }
@@ -49,7 +39,6 @@
   100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-10px);
   }
@@ -59,149 +48,114 @@
   0% {
     background-position: 0% 0%;
   }
-
   50% {
-    background-position: 0% 50%;
+    background-position: 100% 100%;
   }
-
   100% {
-    background-position: 0% 100%;
+    background-position: 0% 0%;
   }
 }
 
 /* BODY/TEXT
-
    */
 
 html,
 body {
   margin: 0 !important;
-
   padding: 0 !important;
-
   width: 100%;
-
   overflow-x: hidden;
 }
 
 p,
 .rammetto-one-regular {
   font-family: "Rammetto One", sans-serif;
-
   font-weight: 400;
-
   font-style: normal;
 }
 
 /* BACKGROUND
-
    */
-
 .gradientBack {
   position: fixed;
-
   top: 0;
-
   left: 0;
-
   height: 100vh;
-
   width: 100%;
-
   z-index: -1;
-
   pointer-events: none;
 
-  background-image: linear-gradient(
-    180deg,
-    #005e80 25%,
+  /* Fallback color using your darkest blue */
+  background-color: #005e80;
 
-    #eaba6b 75%
+  /* - Radial gradient originating out of the top-left corner.
+     - Uses your new color palette: #005e80 (darkest blue) and #eaba6b (accent color).
+     - Wide color stop distributions (0% to 75% to 100%) force the browser to blend 
+       the transitions over an extremely vast area, ensuring the edges are very soft.
+  */
+  background-image: radial-gradient(
+    circle at 0% 0%,
+    #005e80 0%,
+    #005e80 35%,
+    #eaba6b 75%,
+    #005e80 100%
   );
 
-  background-size: 200% 200%;
+  /* Set to 300% to push the blending fields far beyond the borders for maximum softness */
+  background-size: 300% 300%;
 
+  /* Seamlessly transitions back and forth over a 30s period using an organic ease curve */
   animation: gradientAni 30s infinite ease-in-out alternate;
 }
 
 /* BUTTONS
-
    */
-
 .goBack {
   position: absolute;
-
   top: 20px;
-
   left: 20px;
-
   z-index: 100;
-
   padding: 10px 16px;
-
   font-size: 1.2rem;
-
   color: black;
-
   border: none;
-
   border-radius: 6px;
-
   cursor: pointer;
-
   animation: bounceIn2 0.6s ease-in;
-
   transition: background-color 0.3s ease;
 }
 
 .goBack:hover,
 .goBack:focus {
   color: #ead2ac;
-
   background-color: aliceblue;
 }
 
 /* CAPTION / BOTTOM CONTENT
-
     */
-
 .bottCont {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
 }
 
 .caption a {
   display: inline-block;
-
   background-color: #0081af;
-
   color: white;
-
   padding: 8px 18px;
-
   border-radius: 20px;
-
   text-decoration: none;
-
   font-family: "Rammetto One", sans-serif;
-
   font-size: 0.9rem;
-
   transition: all 0.3s ease;
-
   border: 2px solid transparent;
 }
 
 .caption a:hover {
   background-color: #eaba6b;
-
   color: #0081af;
-
   border-color: #0081af;
-
   transform: translateY(-3px);
 }
 
@@ -210,48 +164,31 @@ p,
 }
 
 /* SLIDING PHOTOS
-
     */
-
 .slidingPhotos {
   z-index: 10;
-
   height: calc(100vh - 80px);
-
   margin-top: 80px;
-
   width: 100vw;
-
   position: relative;
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   overflow: hidden;
 }
 
 .showcaseslide {
   position: absolute;
-
   inset: 0;
-
   opacity: 0;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
 }
 
 .showcaseslide[data-active] {
   opacity: 1;
-
   z-index: 5;
 }
 
@@ -261,66 +198,42 @@ p,
 
 .showcaseslide > ul {
   margin: 0;
-
   padding: 0;
-
   list-style: none;
 }
 
 .showcaseslide img {
   pointer-events: none;
-
   display: block;
-
   width: auto;
-
   max-width: 85%;
-
   max-height: 60vh;
-
   object-fit: contain;
-
   object-position: center;
-
   position: relative;
-
   bottom: unset;
 }
 
 /*
-
     SLIDER BUTTONS
-
 */
-
 .slidingPhotos button {
   z-index: 10;
-
   position: absolute;
-
   background: none;
-
   border: none;
-
   font-size: 80px;
-
   bottom: 15px;
-
   transform: translateY(0);
-
   cursor: pointer;
-
   border-radius: 2%;
-
   padding: 16px;
-
   transition: all 0.3s ease;
 }
 
 .slidingPhotos button:hover,
 .slidingPhotos button:focus {
   color: antiquewhite;
-
   outline: none;
 }
 
@@ -336,25 +249,15 @@ p,
 
 .navbar {
   position: fixed !important;
-
   top: 0 !important;
-
   left: 0;
-
   width: 100% !important;
-
   z-index: 9999;
-
   background-color: #97d5f2 !important;
-
   border-bottom: 3px solid #ead2ac !important;
-
   padding: 10px 0;
-
   margin: 0 !important;
-
   display: flex !important;
-
   min-height: 60px;
 }
 
@@ -366,69 +269,45 @@ p,
 
 .navbar-brand {
   font-family: "Rammetto One", sans-serif !important;
-
   font-size: 1.5rem !important;
-
   color: white !important;
 }
 
 .nav-link {
   color: #05202b !important;
-
   font-family: "Rammetto One", sans-serif !important;
-
   font-size: 1.1rem;
-
   padding: 10px 20px !important;
-
   transition: all 0.3s ease !important;
-
   display: inline-block !important;
-
   position: relative;
 }
 
 .nav-link:hover {
   color: #ead2ac !important;
-
   transform: translateY(-3px) scale(1.05);
-
   text-shadow: 0px 0px 8px rgba(234, 210, 172, 0.6);
 }
 
 .navbar-toggler {
   width: 45px;
-
   height: 45px;
-
   background-color: #3eb1e6 !important;
-
   border: none;
-
   display: flex;
-
   position: relative;
-
   justify-content: center;
-
   align-items: center;
-
   padding: 0;
 }
 
 .toggler-icon {
   display: block;
-
   position: absolute;
-
   height: 3px;
-
   width: 28px;
-
   background-color: white !important;
-
   border-radius: 1px;
-
   transition: all 0.25s ease-in-out;
 }
 
@@ -464,44 +343,31 @@ p,
 
 .btn-icon-only {
   width: 45px;
-
   height: 45px;
-
   padding: 0;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   transition: all 0.3s ease;
 }
 
 .btn-icon-only img,
 .btn-icon-only svg {
   width: 24px;
-
   height: 24px;
-
   filter: brightness(0) invert(1);
 }
 
 .btn-icon-only:hover {
   background-color: #eaba6b !important;
-
   transform: translateY(-3px);
 }
 
 .about-container {
   margin-top: 180px !important;
-
   padding-top: 50px;
-
   position: relative;
-
   z-index: 10;
-
   padding-bottom: 50px;
 }
 
@@ -511,25 +377,17 @@ p,
 
 .about-container .card {
   min-height: 500px;
-
   display: flex;
-
   flex-direction: column;
-
   border-radius: 20px;
-
   overflow: hidden;
-
   background-color: rgba(255, 255, 255, 0.95);
-
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
 }
 
 .about-container .card-img-top {
   height: 350px;
-
   object-fit: cover;
-
   background-color: #ddd;
 }
 
@@ -538,29 +396,17 @@ p,
 .page-decorations {
   position: fixed;
   top: 0;
-  position: fixed;
-  top: 0; /* Spans the entire screen viewport height */
   left: 0;
   width: 100vw;
-  height: 100vh;
   height: 100vh;
   pointer-events: none;
   z-index: 99999;
 }
 
 .fade-in-section {
-  position: absolute; /* Fixes layout context to stop elements from stacking at the bottom */
+  position: absolute;
   opacity: 0;
-
-  transform: translateX(50px);
-
   visibility: hidden;
-
-  transition:
-    opacity 3s linear,
-    transform 3s linear;
-
-  /* Removed the rogue transform; syncs smooth progression perfectly */
   transition:
     opacity 3s linear,
     transform 3s linear;
@@ -569,24 +415,15 @@ p,
 /* RIGHT IMAGE: Stationed bottom-right side, slides straight horizontally from the right */
 .fade-in-section.from-right {
   right: 5%;
-
   bottom: 25%;
-
-  transform: translateX(-100vw);
-
-  transform: translateX(50px); /* Shifted outward to the right frame edge */
+  transform: translateX(50px);
 }
 
 /* LEFT IMAGE: Stationed top-left side, slides straight horizontally from the left */
 .fade-in-section.from-left {
   left: 5%;
-
   top: 25%;
-
-  transform: translateX(100vw);
-
-  top: 25%; /* High positioning logic verified */
-  transform: translateX(-50px); /* Shifted outward to the left frame edge */
+  transform: translateX(-50px);
 }
 
 .top-offset {
@@ -599,19 +436,13 @@ p,
 
 .fade-in-section.is-visible {
   opacity: 1;
-
-  transform: translateX(0);
-
   transform: translateX(0);
   visibility: visible;
 }
 
 .fade-in-section img {
   display: block;
-
   height: 96px;
-
   width: auto;
-
   image-rendering: pixelated;
 }
