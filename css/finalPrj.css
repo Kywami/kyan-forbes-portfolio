@@ -85,20 +85,31 @@ p,
   z-index: -1;
   pointer-events: none;
 
+  /* Baseline solid color */
+  background-color: #005e80;
+
+  /* - "circle at 0% 0%" pins the origin perfectly in the top-left corner.
+     - By packing the dense colors up to 45% and using un-labeled intermediate 
+       stops, the browser creates a mathematical "ease-in-out" curve for the color interpolation.
+     - The transition from 0.85 opacity to 0.45 opacity eliminates the harsh 
+       "shatter line" where the gradient meets the background color, producing a seamless, low-contrast wave.
+  */
   background-image: radial-gradient(
     circle at 0% 0%,
     rgba(0, 94, 128, 1) 0%,
-    rgba(0, 94, 128, 0.9) 40%,
+    rgba(0, 94, 128, 0.95) 25%,
+    rgba(0, 94, 128, 0.85) 45%,
+    rgba(0, 94, 128, 0.65) 70%,
+    rgba(0, 94, 128, 0.45) 90%,
     rgba(0, 94, 128, 0.3) 100%
   );
 
-  /* Blown up to 300% to stretch the color transitions well past the screen edges */
+  /* Set to 300% so the animation scales the color field smoothly across the viewport */
   background-size: 300% 300%;
 
-  /* Alternates smoothly back and forth over a 30s period using an ease-in-out curve */
+  /* Leverages your ease-in-out alternate animation loop to keep it completely fluid */
   animation: gradientAni 30s infinite ease-in-out alternate;
 }
-
 /* BUTTONS
    */
 .goBack {
