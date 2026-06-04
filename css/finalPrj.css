@@ -380,7 +380,7 @@ p,
   transition: opacity 3s ease-out, transform 3s ease-out;
 }
 
-.fade-in-left {
+.fade-in-right {
   transform: translateX(-50px);
 }
 
