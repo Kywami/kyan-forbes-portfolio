@@ -17,67 +17,69 @@
 <body>
 
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand nav-link" href="AboutMe.html">About Me</a>
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-            <span class="toggler-icon top-bar"></span>
-            <span class="toggler-icon middle-bar"></span>
-            <span class="toggler-icon bottom-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="WebDevSect.html">Web Dev</a>
-                <a class="nav-link" href="ArtSect.html">Artwork</a>
-                <a class="nav-link" href="AniSect.html">Animation</a>
-                <a class="nav-link" href="PixlArtSect.html">Pixel Art</a>
-            </div>
-        </div>
-    </div>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="AboutMe.html">About Me</a>
+     <a class="navbar-brand nav-link" href="AboutMe.html">About Me</a>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="WebDevSect.html">Web Dev</a>
+                <a class="nav-link" href="ArtSect.html">Artwork</a>
+                <a class="nav-link" href="AniSect.html">Animation</a>
+                <a class="nav-link" href="PixlArtSect.html">Pixel Art</a>
+            </div>
+        </div>
+    </div>
 </nav>
 
-<div class="gradientBack"> 
-    <div class="floatingShapes2">
-        <div class="shape0 shape11"></div>
-        <div class="shape0 shape22"></div>
-        <div class="shape0 shape33"></div>
-        <div class="shape0 shape44"></div>
-    </div>
-</div> 
+<div class="gradientBack"> 
+    <div class="floatingShapes2">
+        <div class="shape0 shape11"></div>
+        <div class="shape0 shape22"></div>
+        <div class="shape0 shape33"></div>
+        <div class="shape0 shape44"></div>
+    </div>
+</div> <button onclick="window.location.href='index.html'" class="goBack"> &#8634; </button>
 
-<button onclick="window.location.href='index.html'" class="goBack"> &#8634; </button>
+<section aria-label="Animation">
+    <div class="slidingPhotos" data-showcaseslide>
+        <button data-showcaseslide-button="prev"> &#8604; </button>
+        <button data-showcaseslide-button="next"> &#8605; </button>
 
-<section aria-label="Web Development Showcases">
-    <div class="slidingPhotos" data-showcaseslide>
-        <button data-showcaseslide-button="prev"> &#8604; </button>
-        <button data-showcaseslide-button="next"> &#8605; </button>
+        <ul data-pics>
+            <li class="showcaseslide" data-active>
+                <div class="bottCont">
+                    <img src="img/nfdjty.jpg" alt="A town conversing">
+                  <p class="caption">
+                        <a href="https://yukochow.itch.io/my-sanctuary" target="_blank" rel="noopener noreferrer">My Sanctuary ↗</a>
+                    </p>
 
-        <ul data-pics>
-            <li class="showcaseslide" data-active>
-                <div class="bottCont">
-                    <img src="img/nfdjty.jpg" onerror="this.src='https://placehold.co/600x400?text=My+Sanctuary+Thumbnail'" alt="A town conversing">
-                    <p class="caption">
-                        <a href="https://yukochow.itch.io/my-sanctuary" target="_blank" rel="noopener noreferrer">My Sanctuary ↗</a>
-                    </p>
-                    <p>Summer 2025</p>
-                </div>
-            </li>
-            
-            <li class="showcaseslide">
-                <div class="bottCont">
-                    <img src="img/legendaries (2).png" onerror="this.src='https://placehold.co/600x400?text=Legendaries+Thumbnail'" alt="Legendary Pokemon Project Visual">
-                    <p class="caption">
-                        <a href="https://kywami.github.io/kyan-forbes-portfolio/legendaries.html" target="_blank" rel="noopener noreferrer">Look at these Legendaries ↗</a>
-                    </p>
-                    <p>Fall 2025</p>
-                </div>
-            </li>
-        </ul>
-    </div>
+                    <p>Summer 2025</p>
+                </p>
+                </div>
+            </li>
+            <li class="showcaseslide">
+                <div class="bottCont">
+                    <img src="img/legendaries (2).png">
+                     <p class="caption">
+                    <a href="https://kywami.github.io/kyan-forbes-portfolio/legendaries.html"target="_blank" rel="noopener noreferrer">Look at these Legendaries</a>
+                    </p>
+                    <p>Fall 2025</p>
+
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
 </section>
 
-<div class="page-decorations" id="react-decorations-root"></div>
 
+    <div class="page-decorations" id="react-decorations-root"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/babel">
@@ -120,12 +122,10 @@
     );
   }
 </script>
-
+    
 <script src="js/finalPrj.js"></script>
 </body>
-</html>
-
-
+</html> 
 
 
 
