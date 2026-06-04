@@ -84,14 +84,14 @@ p,
   z-index: -1;
   pointer-events: none;
   background-image: linear-gradient(
-    180deg,
-   #09637E 5%,
-    #088395 25%;,
-    #7AB2B2 50%,
-    #EBF4F6 75%
+    135deg, /* Changed from 180deg to 135deg so colors sit diagonally */
+    #09637E 0%,
+    #088395 33%,
+    #7AB2B2 66%,
+    #EBF4F6 100% 
   );
-  background-size: 200% 200%;
-  animation: gradientAni 30s infinite ease-in-out alternate;
+  background-size: 400% 400%;
+  animation: gradientAni 20s infinite ease-in-out alternate; 
 }
 
 /* BUTTONS
