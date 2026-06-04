@@ -382,11 +382,13 @@ p,
 
 .fade-in-section.from-right {
   right: 5%;
+  bottom: 40px !important;
   transform: translateX(-100px);
 }
 
 .fade-in-section.from-left {
   left: 5%; 
+  top: 25% !important;
   transform: translateX(100px); 
 }
 
