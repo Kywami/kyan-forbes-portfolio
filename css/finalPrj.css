@@ -36,16 +36,13 @@
 
 @keyframes gradientAni {
   0% {
-    /* The colors are condensed tightly up in the top-left corner */
-    background-size: 100% 100%;
-  }
-  50% {
-    /* The colors expand outward diagonally, washing over the whole screen */
-    background-size: 400% 400%;
+    /* Starts with the center of the first wave group in the top-left */
+    background-position: 0% 0%;
   }
   100% {
-    /* Pushes the waves completely out the bottom-right, resetting seamlessly */
-    background-size: 100% 100%;
+    /* Shifts the entire coordinate system diagonally by exactly one full tile length.
+       This forces the waves to travel seamlessly from top-left to bottom-right. */
+    background-position: 200% 200%;
   }
 }
 /* BODY/TEXT
@@ -81,18 +78,25 @@ p,
     Removing the harsh percentage clamps ensures completely soft transitions with no lines.
   */
   background-image: radial-gradient(
-    circle at -10% -10%,
+    ellipse at top left,
     #09637e 0%,
-    /* Dark blue enters first and stays dominant */ #09637e 40%,
-    #088395 65%,
-    /* Exceptionally wide, soft blend into mid-blue */ #7ab2b2 85%,
-    /* Soft blend into teal */ #ebf4f6 97%,
-    /* White is the absolute last color at the tail edge */ #09637e 100%
-      /* Instantly transitions back to dark blue for the next wave */
-  );
-  background-position: 0% 0%;
+    /* Wave 1: Dark Blue enters first and dominates */ #09637e 15%,
+    #088395 25%,
+    /* Wide 10% gap for ultra-soft transition */ #7ab2b2 35%,
+    /* Wide 10% gap into Teal */ #ebf4f6 44%,
+    /* White is the absolute last color of the wave */ #09637e 50%,
 
-  animation: gradientAni 45s linear infinite;
+    /* Soft transition back to Dark Blue to start Wave 2 */
+    /* --- PERFECT CLONE FOR SEAMLESS WRAP-AROUND --- */ #09637e 65%,
+    #088395 75%,
+    #7ab2b2 85%,
+    #ebf4f6 94%,
+    /* White peaks here at the very end of the second wave */ #09637e 100%
+      /* Instantly matches 0% so the loop reset is completely invisible */
+  );
+  background-size: 200% 200%;
+
+  animation: gradientAni 60s linear infinite;
 }
 
 /* BUTTONS
