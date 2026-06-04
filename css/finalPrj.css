@@ -85,26 +85,25 @@ p,
   z-index: -1;
   pointer-events: none;
 
-  /* Fallback color using your darkest blue */
+  /* Solid background color serving as our dark base */
   background-color: #005e80;
 
   /* - Radial gradient originating out of the top-left corner.
-     - Uses your new color palette: #005e80 (darkest blue) and #eaba6b (accent color).
-     - Wide color stop distributions (0% to 75% to 100%) force the browser to blend 
-       the transitions over an extremely vast area, ensuring the edges are very soft.
+     - Excludes white and yellow entirely to isolate a single, pure blue color scheme.
+     - Blends the solid dark blue (#005e80) with a softer, lower-opacity variation of itself.
+     - Using wide color stops (0% to 40% to 100%) forces a very low-contrast, ultra-soft transition.
   */
   background-image: radial-gradient(
     circle at 0% 0%,
-    #005e80 0%,
-    #005e80 35%,
-    #eaba6b 75%,
-    #005e80 100%
+    rgba(0, 94, 128, 1) 0%,
+    rgba(0, 94, 128, 0.9) 40%,
+    rgba(0, 94, 128, 0.3) 100%
   );
 
-  /* Set to 300% to push the blending fields far beyond the borders for maximum softness */
+  /* Blown up to 300% to stretch the color transitions well past the screen edges */
   background-size: 300% 300%;
 
-  /* Seamlessly transitions back and forth over a 30s period using an organic ease curve */
+  /* Alternates smoothly back and forth over a 30s period using an ease-in-out curve */
   animation: gradientAni 30s infinite ease-in-out alternate;
 }
 
@@ -286,163 +285,4 @@ p,
 .nav-link:hover {
   color: #ead2ac !important;
   transform: translateY(-3px) scale(1.05);
-  text-shadow: 0px 0px 8px rgba(234, 210, 172, 0.6);
-}
-
-.navbar-toggler {
-  width: 45px;
-  height: 45px;
-  background-color: #3eb1e6 !important;
-  border: none;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
-
-.toggler-icon {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 28px;
-  background-color: white !important;
-  border-radius: 1px;
-  transition: all 0.25s ease-in-out;
-}
-
-/* Toggler Animations */
-
-.navbar-toggler.collapsed .top-bar {
-  transform: translateY(-8px);
-}
-
-.navbar-toggler.collapsed .middle-bar {
-  opacity: 1;
-}
-
-.navbar-toggler.collapsed .bottom-bar {
-  transform: translateY(8px);
-}
-
-.navbar-toggler:not(.collapsed) .top-bar {
-  transform: rotate(45deg);
-}
-
-.navbar-toggler:not(.collapsed) .middle-bar {
-  opacity: 0;
-}
-
-.navbar-toggler:not(.collapsed) .bottom-bar {
-  transform: rotate(-45deg);
-}
-
-.nav-link[style*="display: none"] {
-  display: none !important;
-}
-
-.btn-icon-only {
-  width: 45px;
-  height: 45px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.btn-icon-only img,
-.btn-icon-only svg {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
-}
-
-.btn-icon-only:hover {
-  background-color: #eaba6b !important;
-  transform: translateY(-3px);
-}
-
-.about-container {
-  margin-top: 180px !important;
-  padding-top: 50px;
-  position: relative;
-  z-index: 10;
-  padding-bottom: 50px;
-}
-
-.about-container .row {
-  margin-top: 0;
-}
-
-.about-container .card {
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
-}
-
-.about-container .card-img-top {
-  height: 350px;
-  object-fit: cover;
-  background-color: #ddd;
-}
-
-/* --- DECORATIVE SLIDE-IN IMAGES --- */
-
-.page-decorations {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 99999;
-}
-
-.fade-in-section {
-  position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 3s linear,
-    transform 3s linear;
-}
-
-/* RIGHT IMAGE: Stationed bottom-right side, slides straight horizontally from the right */
-.fade-in-section.from-right {
-  right: 5%;
-  bottom: 25%;
-  transform: translateX(50px);
-}
-
-/* LEFT IMAGE: Stationed top-left side, slides straight horizontally from the left */
-.fade-in-section.from-left {
-  left: 5%;
-  top: 25%;
-  transform: translateX(-50px);
-}
-
-.top-offset {
-  margin: 20px;
-}
-
-.bottom-offset {
-  margin: 80px;
-}
-
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.fade-in-section img {
-  display: block;
-  height: 96px;
-  width: auto;
-  image-rendering: pixelated;
-}
+  text-shadow: 0px 0px 8px rgba(234, 21
