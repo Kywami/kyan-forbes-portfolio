@@ -34,21 +34,25 @@
   }
 }
 
+/* 1. REGISTER THE CUSTOM PROPERTY FOR THE BROWSER ENGINE */
+@property --wave-progress {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+/* 2. MAINTAINED YOUR EXACT KEYFRAME NAME WITH TWO-KEYFRAME LOGIC */
 @keyframes gradientAni {
   0% {
-    /* Wave 1 begins radiating outward from the top-left corner */
-    background-size: 100% 100%;
+    --wave-progress: 0%;
   }
   100% {
-    /* Wave 1 expands smoothly all the way out past the bottom right.
-       Because the color stops loop symmetrically, Wave 2 perfectly 
-       replaces it at the exact same pixel value, making the cycle infinite. */
-    background-size: 300% 300%;
+    --wave-progress: 100%;
   }
 }
 
 /* BODY/TEXT
-   */
+    */
 
 html,
 body {
@@ -66,7 +70,7 @@ p,
 }
 
 /* BACKGROUND
-   */
+    */
 .gradientBack {
   position: fixed;
   top: 0;
@@ -76,26 +80,34 @@ p,
   z-index: -1;
   pointer-events: none;
 
-  /* - Origin locked at 'circle at 0% 0%' so colors radiate outward from the top-left.
-     - Massive, buffered color stops (12% to 15% gaps) ensure complete, smoky dissolution.
-     - White (#EBF4F6) acts strictly as a minor trailing accent right before the dark blue resets.
-     - Symmetrical sequence duplication ensures the 100% keyframe perfectly matches the 0% keyframe.
+  /* 3. FIXED COLOR DISTRIBUTION AND SEAMLESS WRAP-AROUND LOOP
+     - Spaced out with massive 25% mathematical gaps so colors enter completely one by one.
+     - Dark blue holds the massive core entries to remain dominant.
+     - White is kept as a minimal trailing accent highlight at the end of each sequence.
   */
   background-image: radial-gradient(
     circle at 0% 0%,
-    #09637e 0%,
-    /* Dark blue forms the solid core of the wave */ #09637e 30%,
-    /* Massive holding buffer so dark blue enters first and stays dominant */
-    #088395 55%,
-    /* Generous 25% buffer lane—colors melt completely into mid-blue */ #7ab2b2
-      75%,
-    /* Generous 20% buffer lane—softly dissolves into teal */ #ebf4f6 96%,
-    /* White is the absolute last color to arrive, entering in a very small amount */
-    #09637e 100%
-      /* Instantly drops back into the dark blue anchor to seamlessly loop */
+
+    /* FIRST COMPLETE WAVE WAVEFRONT */ #09637e
+      calc(var(--wave-progress) - 100%),
+    #09637e calc(var(--wave-progress) - 70%),
+    /* Dominant Dark Blue Base */ #088395 calc(var(--wave-progress) - 45%),
+    /* Soft fade into Mid-Blue */ #7ab2b2 calc(var(--wave-progress) - 20%),
+    /* Soft fade into Teal */ #ebf4f6 calc(var(--wave-progress) - 4%),
+    /* White is the absolute tail end highlight */ #09637e var(--wave-progress),
+    /* Dissolves safely back into dark blue */
+    /* SECOND CONCURRENT WAVE (Perfect tracking clone for seamlessness) */
+    #09637e calc(var(--wave-progress) + 30%),
+    #088395 calc(var(--wave-progress) + 55%),
+    /* Enters cleanly behind the dark blue core */ #7ab2b2
+      calc(var(--wave-progress) + 80%),
+    /* Teal tracking entry */ #ebf4f6 calc(var(--wave-progress) + 96%),
+    /* White trailing accent */ #09637e calc(var(--wave-progress) + 100%)
+      /* Flawless loop anchor point */
   );
 
-  /* Standard 200% tile stretching to allow the 0% to 200% translation to look infinite */
+  /* Keeps canvas fixed to prevent the wall/screen sliding behavior */
+  background-size: 100% 100%;
   background-position: 0% 0%;
 
   /* 'linear' keeps the diagonal stream moving out of the corner at a uniform pace */
@@ -103,7 +115,7 @@ p,
 }
 
 /* BUTTONS
-   */
+    */
 .goBack {
   position: absolute;
   top: 20px;
@@ -126,7 +138,7 @@ p,
 }
 
 /* CAPTION / BOTTOM CONTENT
-    */
+     */
 .bottCont {
   display: flex;
   flex-direction: column;
@@ -158,7 +170,7 @@ p,
 }
 
 /* SLIDING PHOTOS
-    */
+     */
 .slidingPhotos {
   z-index: 10;
 
