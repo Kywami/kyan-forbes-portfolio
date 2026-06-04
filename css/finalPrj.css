@@ -726,27 +726,14 @@ p,
 
 .page-decorations {
 
-  position: fixed;
-
-  bottom: 40px;    
-
+ position: fixed;
+  top: 0;                
   left: 0;
-
   width: 100vw;     
-
-  display: flex;
-
-  justify-content: space-between; 
-
-  padding: 0 5%;     
-
+  height: 100vh;         
   pointer-events: none; 
-
   z-index: 99999;     
-
-}
-
-
+} 
 
 .fade-in-section {
 
