@@ -36,16 +36,12 @@
 
 @keyframes gradientAni {
   0% {
-    /* Starts at the bottom-right */
-    background-position: 100% 100%;
-  }
-  50% {
-    /* Moves smoothly to the top-left */
+    /* Starts with the gradient shifted up and to the left */
     background-position: 0% 0%;
   }
   100% {
-    /* Cycles seamlessly back to the bottom-right without a visible snap */
-    background-position: 100% 100%;
+    /* Moves the background diagonally downward and right by exactly one full pattern size */
+    background-position: 200% 200%;
   }
 }
 
