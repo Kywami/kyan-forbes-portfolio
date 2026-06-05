@@ -57,15 +57,15 @@
 
 @keyframes gradientAni {
   0% {
-    background-position: 0% 0%;
-  }
-
-  50% {
     background-position: 0% 50%;
   }
 
+  50% {
+    background-position: 100% 50%;
+  }
+
   100% {
-    background-position: 0% 100%;
+    background-position: 0% 50%;
   }
 }
 
@@ -119,9 +119,9 @@ p,
     #012c3c 100%
   );
 
-  background-size: 200% 200%;
+  background-size: 300% 300%;
 
-  animation: gradientAni 30s infinite ease-in-out alternate;
+  animation: gradientAni 30s infinite ease infinite;
 }
 
 /* BUTTONS
