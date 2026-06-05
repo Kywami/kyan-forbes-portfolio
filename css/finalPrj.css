@@ -114,7 +114,7 @@ p,
 
   background-image: linear-gradient(
     180deg,
-    #184f63 33%,
+    #205466 33%,
     #004b66 66%,
     #012c3c 100%
   );
@@ -539,7 +539,7 @@ p,
   position: fixed;
   top: 0;
   position: fixed;
-  top: 0; /* Spans the entire screen viewport height */
+  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -549,7 +549,7 @@ p,
 }
 
 .fade-in-section {
-  position: absolute; /* Fixes layout context to stop elements from stacking at the bottom */
+  position: absolute;
   opacity: 0;
 
   transform: translateX(50px);
@@ -560,13 +560,11 @@ p,
     opacity 3s linear,
     transform 3s linear;
 
-  /* Removed the rogue transform; syncs smooth progression perfectly */
   transition:
     opacity 3s linear,
     transform 3s linear;
 }
 
-/* RIGHT IMAGE: Stationed bottom-right side, slides straight horizontally from the right */
 .fade-in-section.from-right {
   right: 5%;
 
@@ -574,10 +572,9 @@ p,
 
   transform: translateX(-100vw);
 
-  transform: translateX(50px); /* Shifted outward to the right frame edge */
+  transform: translateX(50px);
 }
 
-/* LEFT IMAGE: Stationed top-left side, slides straight horizontally from the left */
 .fade-in-section.from-left {
   left: 5%;
 
@@ -585,8 +582,8 @@ p,
 
   transform: translateX(100vw);
 
-  top: 25%; /* High positioning logic verified */
-  transform: translateX(-50px); /* Shifted outward to the left frame edge */
+  top: 25%;
+  transform: translateX(-50px);
 }
 
 .top-offset {
