@@ -598,7 +598,7 @@ p,
 }
 
 .fade-in-section.is-visible {
-  opacity: 0.5;
+  opacity: 0.75;
 
   transform: translateX(0);
 
@@ -612,6 +612,4 @@ p,
   height: 96px;
 
   width: auto;
-
-  image-rendering: pixelated;
 }
