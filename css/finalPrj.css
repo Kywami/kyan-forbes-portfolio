@@ -121,7 +121,7 @@ p,
 
   background-size: 300% 300%;
 
-  animation: gradientAni 30s infinite ease infinite;
+  animation: gradientAni 30s infinite ease-in-out infinite;
 }
 
 /* BUTTONS
