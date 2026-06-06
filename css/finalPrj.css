@@ -595,7 +595,7 @@ p,
 }
 
 .fade-in-section.is-visible {
-  opacity: 0.5;
+  opacity: 0.7;
 
   transform: translateX(0);
 
